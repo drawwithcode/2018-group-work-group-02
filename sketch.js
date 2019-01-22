@@ -4,6 +4,7 @@ function setup() {
   imgfundo = loadImage("assets/bg.png");
   aviao1 = loadImage("assets/aviao1.svg");
   system = new ParticleSystem(createVector(+width/20-width/50, -height/20+height/10));
+  system2 = new ParticleSystem2(createVector(+width/20-width/50, -height/20+height/10));
 
 }
 
@@ -47,62 +48,8 @@ function relogiofundo() {
 }
 
 function aviaouno () {
-  // noStroke();
 
-  // Understanding device orientation: ALPHA = rotationZ
-  // draw ALPHA red rectangle
-  // fill('#F24440');
-  // rect(0,0,map(rotationZ,0,360,1,width),height/3);
-  // // print values
-  // fill('#333333');
-  // textAlign(LEFT)
-  // text('0',5,height/6);
-  // textAlign(CENTER)
-  // text(round(rotationZ), width/2, height/6);
-  // textAlign(RIGHT)
-  // text('360',width-5,height/6);
-
-  // Understanding device orientation: BETA = rotationX
-  // draw BETA blue rectangle
-  // fill('#1785FB');
-  // rect(0,height/3,map(rotationX,-180,180,1,width),height/3);
-  // // print values
-  // fill('#333333');
-  // textAlign(LEFT)
-  // text('-180',5,height/2);
-  // textAlign(CENTER)
-  // text(round(rotationX), width/2, height/2);
-  // textAlign(RIGHT);
-  // text('180',width-5,height/2);
-
-
-
-  // Understanding device orientation: GAMMA = rotationY
-  // draw GAMMA green rectangle
-  // fill('#73C86B');
-  // rect(0,height/3*2,map(rotationY,-90,90,1,width),height/3);
-  // //RETANGULO 2
-  // // rect(width/2,height/2,10,10)
-  // // print values
-  // fill('#333333');
-  // textAlign(LEFT);
-  // text('-90',5,height/6*5)
-  // textAlign(CENTER);
-  // text(round(rotationY), width/2, height/6*5);
-  // textAlign(RIGHT);
-  // text('90',width-5,height/6*5)
-
-  //plane
-  // Displays the image at its actual size at point (0,0)
-    //
-    //   rotate(rotationY);
-
-
-    // draw rect in gray
 fill(192);
-// rect(40, 40, 40, 40);
-// rect(width/2,height/2, width/10,width/10);
-// save drawing state for later
 push();
 
 // move the origin to the pivot point
@@ -126,10 +73,10 @@ image(aviao1, -width/20, -width/20, width/10, width/10);
 
 // A simple Particle class
 var Particle = function(position) {
- this.acceleration = createVector(0, 0.05);
- this.velocity = createVector(random(-0.1, 0.1), random(-1, 0));
+ this.acceleration = createVector(0, 0.02);
+ this.velocity = createVector(random(-0.05, -0.05), random(-0.05, 0.05));
  this.position = position.copy();
- this.lifespan = 255;
+ this.lifespan = 500;
 };
 
 Particle.prototype.run = function() {
@@ -146,15 +93,16 @@ Particle.prototype.update = function(){
 
 // Method to display
 Particle.prototype.display = function() {
- stroke(200, this.lifespan);
+ stroke(600, this.lifespan);
  strokeWeight(0);
- fill(255, this.lifespan);
- ellipse(this.position.x, this.position.y, width/200, width/200);
+ fill(255, 25);
+  // fill(255, this.lifespan);
+ ellipse(12, this.position.y-30, width/300, width/100);
 };
 
 // Is the particle still useful?
 Particle.prototype.isDead = function(){
- return this.lifespan < 0;
+ return this.lifespan < 2;
 };
 
 var ParticleSystem = function(position) {
@@ -173,7 +121,67 @@ ParticleSystem.prototype.run = function() {
    if (p.isDead()) {
      this.particles.splice(i, 1);
    }
+
  }
+
+
+  system2.addParticle();
+  system2.run();
+ }
+
+ // PARTICLE 2
+ var Particle2 = function(position) {
+  this.acceleration = createVector(0, 0.02);
+  this.velocity = createVector(random(-0.05, -0.05), random(-0.05, 0.05));
+  this.position = position.copy();
+  this.lifespan = 500;
+ };
+
+ Particle2.prototype.run = function() {
+  this.update();
+  this.display();
+ };
+
+ // Method to update position
+ Particle2.prototype.update = function(){
+  this.velocity.add(this.acceleration);
+  this.position.add(this.velocity);
+  this.lifespan -= 2;
+ };
+
+ // Method to display
+ Particle2.prototype.display = function() {
+  stroke(600, this.lifespan);
+  strokeWeight(0);
+  fill(255, 25);
+   // fill(255, this.lifespan);
+  ellipse(-12, this.position.y-30, width/300, width/100);
+ };
+
+ // Is the particle still useful?
+ Particle2.prototype.isDead = function(){
+  return this.lifespan < 2;
+ };
+
+ var ParticleSystem2 = function(position) {
+  this.origin = position.copy();
+  this.particles = [];
+ };
+
+ ParticleSystem2.prototype.addParticle = function() {
+  this.particles.push(new Particle2(this.origin));
+ };
+
+ ParticleSystem2.prototype.run = function() {
+  for (var i = this.particles.length-1; i >= 0; i--) {
+    var p = this.particles[i];
+    p.run();
+    if (p.isDead()) {
+      this.particles.splice(i, 1);
+    }
+
+  }
+
 
 }
 
