@@ -204,16 +204,16 @@ if (diametroellipse < 80) {
 
 
 
-  if (rotationY > 30) {
+  if (rotationX > 30) {
       var rotacaoaviaolado = 30;
       } else {
-      var rotacaoaviaolado = rotationY;
+      var rotacaoaviaolado = rotationX;
       }
 
-      if (rotationY < -30) {
+      if (rotationX < -30) {
           var rotacaoaviaolado = -30;
           } else {
-          var rotacaoaviaolado = rotationY;
+          var rotacaoaviaolado = rotationX;
           }
 
   rotate(rotacaoaviaolado);
