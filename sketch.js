@@ -201,13 +201,13 @@ function controladores() {
     var rotacaoaviaolado = rotationX;
   }
 
-  if (rotationX > 330) {
-    var rotacaoaviaolado = 330;
+  if (rotationX < -30) {
+    var rotacaoaviaolado = -30;
   } else {
     var rotacaoaviaolado = rotationX;
   }
 
-  if (rotationX > 330) {
+  if (rotationX > 30) {
       stroke(255,0,0, 255);
   } else {
   stroke(255,255,255, 255);
