@@ -212,9 +212,9 @@ function controladores() {
   } else {
   stroke(255,255,255, 255);
   }
-
+  text(rotacaoaviaolado, width / 2, height / 1.5 - 30);
   noFill();
-  
+
   strokeWeight(diametroellipse / 50);
   translate(diametroellipse, height - 1.6 * diametroellipse);
   ellipse(0, 0, diametroellipse, diametroellipse);
