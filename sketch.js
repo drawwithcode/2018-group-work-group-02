@@ -24,16 +24,6 @@ function relogiofundo() {
   var segundosdiaaltura = 9 * windowHeight * segundosdia / 86400;
   var posicaoybg = -1 * segundosdiaaltura;
 
-//ESSA PARTE ABAIXO NAO SEI PRA QUE SERVE
-  // if (mi < 10) {
-  //   mi = "0" + mi;
-  // }
-  // if (ho < 10) {
-  //   ho = "0" + ho;
-  // }
-  // if (se < 10) {
-  //   se = "0" + se;
-  // }
 //IMAGEM DE FUNDO CAMBIANTE
   image(imgfundo, 0, posicaoybg, width, height * 10);
 
@@ -53,17 +43,16 @@ fill(192);
 push();
 
 // move the origin to the pivot point
-translate(width/2,height/2);
+translate(width/2,height/2.65);
 
 // then pivot the grid
 rotate(rotationZ);
 
-// draw rect in black at the new origin
+push();
 fill(0);
-// rect(-width/20, -width/20, width/10,width/10)
-// imageMode(CENTER);
-image(aviao1, -width/20, -width/20, width/10, width/10);
-
+tint(255, 127);
+image(aviao1, -width/11.2, -width/11.2, width/5.6, width/5.6);
+pop();
 //revert to original drawing state
 // pop();
 
@@ -71,10 +60,13 @@ image(aviao1, -width/20, -width/20, width/10, width/10);
  system.run();
 }
 
+//OPACIDADE DO CONTRAIL
+var opacidadeContrail = 25;
+
 // A simple Particle class
 var Particle = function(position) {
  this.acceleration = createVector(0, 0.02);
- this.velocity = createVector(random(-0.05, -0.05), random(-0.05, 0.05));
+ this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
  this.position = position.copy();
  this.lifespan = 500;
 };
@@ -95,9 +87,9 @@ Particle.prototype.update = function(){
 Particle.prototype.display = function() {
  stroke(600, this.lifespan);
  strokeWeight(0);
- fill(255, 25);
+ fill(255, opacidadeContrail);
   // fill(255, this.lifespan);
- ellipse(12, this.position.y-30, width/300, width/100);
+ ellipse(16, this.position.y-25, width/300, width/100);
 };
 
 // Is the particle still useful?
@@ -132,7 +124,7 @@ ParticleSystem.prototype.run = function() {
  // PARTICLE 2
  var Particle2 = function(position) {
   this.acceleration = createVector(0, 0.02);
-  this.velocity = createVector(random(-0.05, -0.05), random(-0.05, 0.05));
+  this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
   this.position = position.copy();
   this.lifespan = 500;
  };
@@ -153,9 +145,8 @@ ParticleSystem.prototype.run = function() {
  Particle2.prototype.display = function() {
   stroke(600, this.lifespan);
   strokeWeight(0);
-  fill(255, 25);
-   // fill(255, this.lifespan);
-  ellipse(-12, this.position.y-30, width/300, width/100);
+  fill(255, opacidadeContrail);
+  ellipse(-16, this.position.y-25, width/300, width/100);
  };
 
  // Is the particle still useful?
