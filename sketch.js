@@ -203,8 +203,6 @@ function controladores() {
 
   if (rotationX < -30) {
     var rotacaoaviaolado = -30;
-  } else {
-    var rotacaoaviaolado = rotationX;
   }
 
   if (rotationX > 30) {
