@@ -184,40 +184,44 @@ function controladores() {
   push();
 
   if (windowWidth > windowHeight) {
-      var diametroellipse = height/7;
-      } else {
-      var diametroellipse = width/7;
-      }
+    var diametroellipse = height / 7;
+  } else {
+    var diametroellipse = width / 7;
+  }
 
-if (diametroellipse < 80) {
-          var diametroellipse = 80;
-          } else {
+  if (diametroellipse < 80) {
+    var diametroellipse = 80;
+  } else {
 
-          }
-
-  noFill();
-  stroke(255,255);
-  strokeWeight(diametroellipse/50);
-  translate(diametroellipse,height-1.6*diametroellipse);
-  ellipse(0,0,diametroellipse,diametroellipse);
-  translate(0,0);
-
-
+  }
 
   if (rotationX > 30) {
-      var rotacaoaviaolado = 30;
-      } else {
-      var rotacaoaviaolado = rotationX;
-      }
+    var rotacaoaviaolado = 30;
+  } else {
+    var rotacaoaviaolado = rotationX;
+  }
 
-      if (rotationX < -30) {
-          var rotacaoaviaolado = -30;
-          } else {
-          var rotacaoaviaolado = rotationX;
-          }
+  if (rotationX > 330) {
+    var rotacaoaviaolado = 330;
+  } else {
+    var rotacaoaviaolado = rotationX;
+  }
 
-  rotate(-1*rotacaoaviaolado);
-  image(aviaolado, -diametroellipse/2+diametroellipse*0.2,-diametroellipse/8,diametroellipse*0.6,diametroellipse*0.258);
+  if (rotationX > 330) {
+      stroke(255,0,0, 255);
+  } else {
+  stroke(255,255,255, 255);
+  }
+
+  noFill();
+  
+  strokeWeight(diametroellipse / 50);
+  translate(diametroellipse, height - 1.6 * diametroellipse);
+  ellipse(0, 0, diametroellipse, diametroellipse);
+  translate(0, 0);
+
+  rotate(-1 * rotacaoaviaolado);
+  image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   // rect(0,0,diametroellipse,5)
   pop();
 
