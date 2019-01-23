@@ -216,7 +216,7 @@ if (diametroellipse < 80) {
           var rotacaoaviaolado = rotationX;
           }
 
-  rotate(rotacaoaviaolado);
+  rotate(-1*rotacaoaviaolado);
   image(aviaolado, -diametroellipse/2+diametroellipse*0.2,-diametroellipse/8,diametroellipse*0.6,diametroellipse*0.258);
   // rect(0,0,diametroellipse,5)
   pop();
