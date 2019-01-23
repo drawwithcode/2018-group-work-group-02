@@ -68,7 +68,7 @@ var Particle = function(position) {
  this.acceleration = createVector(0, 0.02);
  this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
  this.position = position.copy();
- this.lifespan = 500;
+ this.lifespan = 650;
 };
 
 Particle.prototype.run = function() {
@@ -89,7 +89,7 @@ Particle.prototype.display = function() {
  strokeWeight(0);
  fill(255, opacidadeContrail);
   // fill(255, this.lifespan);
- ellipse(width/38, this.position.y-width/38, width/180, width/60);
+ ellipse(width/38, this.position.y, width/180, width/60);
 };
 
 // Is the particle still useful?
@@ -126,7 +126,7 @@ ParticleSystem.prototype.run = function() {
   this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
   this.position = position.copy();
-  this.lifespan = 500;
+  this.lifespan = 650;
  };
 
  Particle2.prototype.run = function() {
@@ -146,7 +146,7 @@ ParticleSystem.prototype.run = function() {
   stroke(600, this.lifespan);
   strokeWeight(0);
   fill(255, opacidadeContrail);
-  ellipse(-width/38, this.position.y-width/38, width/180, width/60);
+  ellipse(-width/38, this.position.y, width/180, width/60);
  };
 
  // Is the particle still useful?
