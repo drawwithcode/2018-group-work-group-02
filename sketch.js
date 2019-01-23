@@ -89,7 +89,7 @@ Particle.prototype.display = function() {
  strokeWeight(0);
  fill(255, opacidadeContrail);
   // fill(255, this.lifespan);
- ellipse(16, this.position.y-25, width/300, width/100);
+ ellipse(width/38, this.position.y-width/38, width/180, width/60);
 };
 
 // Is the particle still useful?
@@ -146,7 +146,7 @@ ParticleSystem.prototype.run = function() {
   stroke(600, this.lifespan);
   strokeWeight(0);
   fill(255, opacidadeContrail);
-  ellipse(-16, this.position.y-25, width/300, width/100);
+  ellipse(-width/38, this.position.y-width/38, width/180, width/60);
  };
 
  // Is the particle still useful?
