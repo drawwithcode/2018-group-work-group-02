@@ -3,6 +3,7 @@ function setup() {
   angleMode(DEGREES)
   imgfundo = loadImage("assets/bg.png");
   aviao1 = loadImage("assets/aviao1.svg");
+  aviaolado = loadImage("assets/aviaolado.svg");
   system = new ParticleSystem(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
   system2 = new ParticleSystem2(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
 
@@ -173,18 +174,54 @@ ParticleSystem2.prototype.run = function() {
     }
 
   }
-// ALTITUDE
+  //POP THAT CUTS TRANSLATE
+  pop();
+
 
 }
-
+// ALTITUDE
 function controladores() {
   push();
-  fill(100,255);
 
-  var diametroellipse = width/10;
+  if (windowWidth > windowHeight) {
+      var diametroellipse = height/7;
+      } else {
+      var diametroellipse = width/7;
+      }
 
-  ellipse(-width/2+diametroellipse,height/2,diametroellipse,diametroellipse);
+if (diametroellipse < 80) {
+          var diametroellipse = 80;
+          } else {
+
+          }
+
+  noFill();
+  stroke(255,255);
+  strokeWeight(diametroellipse/50);
+  translate(diametroellipse,height-1.6*diametroellipse);
+  ellipse(0,0,diametroellipse,diametroellipse);
+  translate(0,0);
+
+
+
+  if (rotationY > 30) {
+      var rotacaoaviaolado = 30;
+      } else {
+      var rotacaoaviaolado = rotationY;
+      }
+
+      if (rotationY < -30) {
+          var rotacaoaviaolado = -30;
+          } else {
+          var rotacaoaviaolado = rotationY;
+          }
+
+  rotate(rotacaoaviaolado);
+  image(aviaolado, -diametroellipse/2+diametroellipse*0.2,-diametroellipse/8,diametroellipse*0.6,diametroellipse*0.258);
+  // rect(0,0,diametroellipse,5)
   pop();
+
+
 }
 
 function windowResized() {
