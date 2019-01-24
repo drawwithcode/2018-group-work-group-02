@@ -1,3 +1,5 @@
+let alturaemfeet = 40000
+
 function setup() {
   createCanvas(windowWidth, windowHeight)
   angleMode(DEGREES)
@@ -227,29 +229,35 @@ function controladores() {
   // rect(0,0,diametroellipse,5)
   pop();
 
-  //TEXT INFO ON HEIGHT
-// var grausubida = frameCount+rotacaoaviaolado*30;
-// var graudescida = -frameCount+rotacaoaviaolado*30
+// var grausubida = 0;
 //
-// var contadorfeet = 300+grausubida;
+// if (rotacaoaviaolado>1) {
+//   grausubida ++;
+// }
 //
-//
+// if (rotacaoaviaolado<0) {
+//   grausubida --;
+// }
 
-var grausubida = 0;
+// var alturaemfeet = 300+grausubida;
 
-if (rotacaoaviaolado>0) {
-  grausubida ++;
+// var grausubida = -1.2;
+
+ if (rotacaoaviaolado > 1) {
+   alturaemfeet ++;
 }
 
-if (rotacaoaviaolado<0) {
-  grausubida --;
+if (rotacaoaviaolado < -1) {
+   alturaemfeet --;
 }
 
-var alturaemfeet = 300+grausubida;
+if (grausubida = 0) {
+   var alturaemfeet = alturaemfeet;
+}
 
-  text(alturaemfeet, 0,diametroellipse*0.75);
+ text(alturaemfeet, 0,diametroellipse*0.75);
 
-  var alturaemmeter = 456.76;
+
 
   text(round(grausubida), 0,diametroellipse*0.95);
   pop();
