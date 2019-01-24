@@ -231,7 +231,11 @@ function controladores() {
   }
 
   if (alturaemfeet > 400) {
-    stroke(255, 0, 0, 255);
+    stroke(255, 94, 77, 255);
+  }
+
+  if (alturaemfeet < 3) {
+    stroke(255, 94, 77, 255);
   } else {
     stroke(255, 255, 255, 255);
   }
@@ -248,7 +252,15 @@ function controladores() {
   translate(0, 0);
 
   rotate(-1 * rotacaoaviaolado);
-  image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
+  if (alturaemfeet > 400) {
+    image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
+  }
+  if (alturaemfeet < 3) {
+    image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
+  }
+  else {
+    image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
+  }
   // rect(0,0,diametroellipse,5)
   pop();
 
@@ -282,7 +294,10 @@ function controladores() {
   textSize(diametroellipse / 5);
   textStyle(BOLD);
   if (alturaemfeet > 400) {
-    fill(255, 0, 0, 255)
+    fill(255, 94, 77, 255)
+  }
+  if (alturaemfeet < 2.9) {
+    fill(255, 94, 77, 255)
   }
 
   text(alturafeet + ' ft', 0, diametroellipse * 0.75);
