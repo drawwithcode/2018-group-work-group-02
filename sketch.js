@@ -229,9 +229,9 @@ function controladores() {
 
   //TEXT INFO ON HEIGHT
 var grausubida = frameCount+rotacaoaviaolado*30;
-var graudescida = frameCount-rotacaoaviaolado*30
+var graudescida = -frameCount+rotacaoaviaolado*30
 
-var contadorfeet = grausubida-graudescida;
+var contadorfeet = 300+grausubida+graudescida;
 
 if (contadorfeet > 40000) {
   var alturaemfeet = 40000;
