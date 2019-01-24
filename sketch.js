@@ -231,6 +231,15 @@ function controladores() {
     var rotacaoaviaolado = -30;
   }
 
+
+
+  noFill();
+
+  //AREA DO CIRCULO COM aviaolado
+  strokeWeight(diametroellipse / 50);
+  translate(diametroellipse, height - 1.6 * diametroellipse);
+
+  push();
   if (alturaemfeet > 400) {
     stroke(255, 94, 77, 255);
   }
@@ -240,15 +249,6 @@ function controladores() {
   } else {
     stroke(255, 255, 255, 255);
   }
-  // text(rotacaoaviaolado, width / 2, height / 1.5 - 30);
-  noFill();
-
-  //AREA DO CIRCULO COM aviaolado
-  strokeWeight(diametroellipse / 50);
-  translate(diametroellipse, height - 1.6 * diametroellipse);
-
-  push();
-
   ellipse(0, 0, diametroellipse, diametroellipse);
   translate(0, 0);
 
@@ -297,7 +297,7 @@ function controladores() {
   if (alturaemfeet > 400) {
     fill(255, 94, 77, 255)
   }
-  if (alturaemfeet < 2.9) {
+  if (alturaemfeet < 3) {
     fill(255, 94, 77, 255)
   }
 
@@ -307,6 +307,12 @@ function controladores() {
 
   textStyle(NORMAL);
   fill(255, 127);
+  if (alturaemfeet > 400) {
+    fill(255, 94, 77, 255)
+  }
+  if (alturaemfeet < 3) {
+    fill(255, 94, 77, 255)
+  }
   text(round(alturameter) + ' m', 0, diametroellipse * 0.95);
   pop();
 
