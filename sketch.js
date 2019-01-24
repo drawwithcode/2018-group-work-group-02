@@ -235,24 +235,23 @@ function controladores() {
 //
 //
 
-var maisalto = 0;
-var maisbaixo = 0;
+var grausubida = 0;
 
 if (rotacaoaviaolado>0) {
-  maisalto ++;
+  grausubida ++;
 }
 
 if (rotacaoaviaolado<0) {
-  maisbaixo --;
+  grausubida --;
 }
 
-var alturaemfeet = 300+maisalto+maisbaixo;
+var alturaemfeet = 300+grausubida;
 
   text(alturaemfeet, 0,diametroellipse*0.75);
 
   var alturaemmeter = 456.76;
 
-  text(round(maisalto), 0,diametroellipse*0.95);
+  text(round(grausubida), 0,diametroellipse*0.95);
   pop();
 
   pop();
