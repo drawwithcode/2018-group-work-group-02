@@ -257,10 +257,10 @@ textStyle(BOLD);
 
 var alturafeet=alturaemfeet*100;
 
-if (alturaemfeet>4000) {
+if (alturaemfeet>400) {
   alturafeet =40000
 }
-if (alturaemfeet<30) {
+if (alturaemfeet<3) {
   alturafeet =300
 }
 
