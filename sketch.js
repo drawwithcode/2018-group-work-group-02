@@ -194,16 +194,16 @@ function controladores() {
   } else {
 
   }
-    var rotacaoaviaolado = 12;
-  // if (rotationX > 30) {
-  //   var rotacaoaviaolado = 30;
-  // } else {
-  //   var rotacaoaviaolado = rotationX;
-  // }
-  //
-  // if (rotationX < -30) {
-  //   var rotacaoaviaolado = -30;
-  // }
+
+  if (rotationX > 30) {
+    var rotacaoaviaolado = 30;
+  } else {
+    var rotacaoaviaolado = rotationX;
+  }
+
+  if (rotationX < -30) {
+    var rotacaoaviaolado = -30;
+  }
 
   if (rotationX > 30) {
       stroke(255,0,0, 255);
