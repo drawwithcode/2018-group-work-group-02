@@ -6,6 +6,7 @@ function setup() {
   imgfundo = loadImage("assets/bg.png");
   aviao1 = loadImage("assets/aviao1.svg");
   aviaolado = loadImage("assets/aviaolado.svg");
+  aviaoladover = loadImage("assets/aviaoladover.svg");
   system = new ParticleSystem(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
   system2 = new ParticleSystem2(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
 
@@ -253,7 +254,7 @@ function controladores() {
 
   rotate(-1 * rotacaoaviaolado);
   if (alturaemfeet > 400) {
-    image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
+    image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   }
   if (alturaemfeet < 3) {
     image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
