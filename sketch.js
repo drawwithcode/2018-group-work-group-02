@@ -35,9 +35,9 @@ function relogiofundo() {
   textSize(20);
   textAlign(CENTER);
   textFont("Josefin Sans");
-  text(segundosdia, width / 2, height / 2 - 30);
-  text(round(segundosdiaaltura), width / 2, height / 2);
-  text(windowHeight, width / 2, height / 2 + 30);
+  // text(segundosdia, width / 2, height / 2 - 30);
+  // text(round(segundosdiaaltura), width / 2, height / 2);
+  // text(windowHeight, width / 2, height / 2 + 30);
 
 }
 
@@ -65,7 +65,30 @@ function aviaouno() {
 }
 
 //OPACIDADE DO CONTRAIL
-var opacidadeContrail = 25;
+
+
+if (alturaemfeet>300) {
+  var opacidadeContrail = 25;
+}
+
+if (alturaemfeet>250) {
+  var opacidadeContrail = 20;
+}
+
+if (alturaemfeet>200) {
+  var opacidadeContrail = 15;
+}
+
+if (alturaemfeet>100) {
+  var opacidadeContrail = 10;
+}
+
+if (alturaemfeet>50) {
+  var opacidadeContrail = 5;
+}
+else {
+  var opacidadeContrail = 0;
+}
 
 // A simple Particle class
 var Particle = function(position) {
@@ -207,12 +230,12 @@ function controladores() {
     var rotacaoaviaolado = -30;
   }
 
-  if (rotationX > 30) {
-      stroke(255,0,0, 255);
+  if (alturaemfeet > 400) {
+    stroke(255, 0, 0, 255);
   } else {
-  stroke(255,255,255, 255);
+    stroke(255, 255, 255, 255);
   }
-  text(rotacaoaviaolado, width / 2, height / 1.5 - 30);
+  // text(rotacaoaviaolado, width / 2, height / 1.5 - 30);
   noFill();
 
   //AREA DO CIRCULO COM aviaolado
@@ -229,52 +252,46 @@ function controladores() {
   // rect(0,0,diametroellipse,5)
   pop();
 
+  if (rotacaoaviaolado > 3) {
+    var grausubida = 1;
+  }
 
+  if (rotacaoaviaolado < -3) {
+    var grausubida = -1;
+  }
 
-if (rotacaoaviaolado>3) {
-  var grausubida = 1;
-}
+  if (grausubida > 0) {
+    alturaemfeet++;
+  }
 
-if (rotacaoaviaolado<-3) {
-  var grausubida = -1;
-}
+  if (grausubida < 0) {
+    alturaemfeet--;
+  }
 
- if (grausubida > 0) {
-   alturaemfeet ++;
-}
+  var alturafeet = alturaemfeet * 100;
 
-if (grausubida < 0) {
-   alturaemfeet --;
-}
+  if (alturaemfeet > 400) {
+    alturafeet = 40000
+  }
+  if (alturaemfeet < 3) {
+    alturafeet = 300
+  }
 
-// if (grausubida = 0) {
-//    alturaemfeet = alturaemfeet;
-// }
+  noStroke();
+  fill(255, 255);
+  textSize(diametroellipse / 5);
+  textStyle(BOLD);
+  if (alturaemfeet > 400) {
+    fill(255, 0, 0, 255)
+  }
 
+  text(alturafeet + ' ft', 0, diametroellipse * 0.75);
 
-var alturafeet=alturaemfeet*100;
+  var alturameter = alturafeet / 3.28084
 
-if (alturaemfeet>400) {
-  alturafeet =40000
-}
-if (alturaemfeet<3) {
-  alturafeet =300
-}
-
-noStroke();
-fill(255,255);
-textSize(diametroellipse/5);
-textStyle(BOLD);
-if (alturaemfeet>400) {
-  fill (255,0,0,255)
-}
-
-text(alturafeet+' ft', 0,diametroellipse*0.75);
-
-var alturameter=alturafeet/3.28084
-
-textStyle(NORMAL);
-  text(round(alturameter)+' m', 0,diametroellipse*0.95);
+  textStyle(NORMAL);
+  fill(255, 127);
+  text(round(alturameter) + ' m', 0, diametroellipse * 0.95);
   pop();
 
   pop();
