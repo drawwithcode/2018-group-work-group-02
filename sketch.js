@@ -240,11 +240,11 @@ if (rotacaoaviaolado<-3) {
 }
 
  if (grausubida > 0) {
-   alturaemfeet +100;
+   alturaemfeet ++;
 }
 
 if (grausubida < 0) {
-   alturaemfeet -100;
+   alturaemfeet --;
 }
 
 // if (grausubida = 0) {
