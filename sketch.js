@@ -40,98 +40,7 @@ function relogiofundo() {
   // text(windowHeight, width / 2, height / 2 + 30);
 
 }
-function controladores() {
-  push();
 
-  if (windowWidth > windowHeight) {
-    var diametroellipse = height / 7;
-  } else {
-    var diametroellipse = width / 7;
-  }
-
-  if (diametroellipse < 80) {
-    var diametroellipse = 80;
-  } else {
-
-  }
-
-  if (rotationX > 30) {
-    var rotacaoaviaolado = 30;
-  } else {
-    var rotacaoaviaolado = rotationX;
-  }
-
-  if (rotationX < -30) {
-    var rotacaoaviaolado = -30;
-  }
-
-  if (alturaemfeet > 400) {
-    stroke(255, 0, 0, 255);
-  } else {
-    stroke(255, 255, 255, 255);
-  }
-  // text(rotacaoaviaolado, width / 2, height / 1.5 - 30);
-  noFill();
-
-  //AREA DO CIRCULO COM aviaolado
-  strokeWeight(diametroellipse / 50);
-  translate(diametroellipse, height - 1.6 * diametroellipse);
-
-  push();
-
-  ellipse(0, 0, diametroellipse, diametroellipse);
-  translate(0, 0);
-
-  rotate(-1 * rotacaoaviaolado);
-  image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
-  // rect(0,0,diametroellipse,5)
-  pop();
-
-  if (rotacaoaviaolado > 3) {
-    var grausubida = 1;
-  }
-
-  if (rotacaoaviaolado < -3) {
-    var grausubida = -1;
-  }
-
-  if (grausubida > 0) {
-    alturaemfeet++;
-  }
-
-  if (grausubida < 0) {
-    alturaemfeet--;
-  }
-
-  var alturafeet = alturaemfeet * 100;
-
-  if (alturaemfeet > 400) {
-    alturafeet = 40000
-  }
-  if (alturaemfeet < 3) {
-    alturafeet = 300
-  }
-
-  noStroke();
-  fill(255, 255);
-  textSize(diametroellipse / 5);
-  textStyle(BOLD);
-  if (alturaemfeet > 400) {
-    fill(255, 0, 0, 255)
-  }
-
-  text(alturafeet + ' ft', 0, diametroellipse * 0.75);
-
-  var alturameter = alturafeet / 3.28084
-
-  textStyle(NORMAL);
-  fill(255, 127);
-  text(round(alturameter) + ' m', 0, diametroellipse * 0.95);
-  pop();
-
-  pop();
-
-}
 function aviaouno() {
 
   fill(192);
@@ -155,10 +64,33 @@ function aviaouno() {
   system.run();
 }
 
-
 //OPACIDADE DO CONTRAIL
 
-var opacidadeContrail = 25;
+  var opacidadeContrail = 25;
+
+// if (alturaemfeet>300) {
+//   var opacidadeContrail = 25;
+// }
+//
+// if (alturaemfeet>250) {
+//   var opacidadeContrail = 20;
+// }
+//
+// if (alturaemfeet>200) {
+//   var opacidadeContrail = 15;
+// }
+//
+// if (alturaemfeet>100) {
+//   var opacidadeContrail = 10;
+// }
+//
+// if (alturaemfeet>50) {
+//   var opacidadeContrail = 5;
+// }
+// // if (alturaemfeet<50) {
+// //   var opacidadeContrail = 0;
+// // }
+
 
 // A simple Particle class
 var Particle = function(position) {
@@ -275,7 +207,98 @@ ParticleSystem2.prototype.run = function() {
 
 }
 // ALTITUDE
+function controladores() {
+  push();
 
+  if (windowWidth > windowHeight) {
+    var diametroellipse = height / 7;
+  } else {
+    var diametroellipse = width / 7;
+  }
+
+  if (diametroellipse < 80) {
+    var diametroellipse = 80;
+  } else {
+
+  }
+
+  if (rotationX > 30) {
+    var rotacaoaviaolado = 30;
+  } else {
+    var rotacaoaviaolado = rotationX;
+  }
+
+  if (rotationX < -30) {
+    var rotacaoaviaolado = -30;
+  }
+
+  if (alturaemfeet > 400) {
+    stroke(255, 0, 0, 255);
+  } else {
+    stroke(255, 255, 255, 255);
+  }
+  // text(rotacaoaviaolado, width / 2, height / 1.5 - 30);
+  noFill();
+
+  //AREA DO CIRCULO COM aviaolado
+  strokeWeight(diametroellipse / 50);
+  translate(diametroellipse, height - 1.6 * diametroellipse);
+
+  push();
+
+  ellipse(0, 0, diametroellipse, diametroellipse);
+  translate(0, 0);
+
+  rotate(-1 * rotacaoaviaolado);
+  image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
+  // rect(0,0,diametroellipse,5)
+  pop();
+
+  if (rotacaoaviaolado > 3) {
+    var grausubida = 1;
+  }
+
+  if (rotacaoaviaolado < -3) {
+    var grausubida = -1;
+  }
+
+  if (grausubida > 0) {
+    alturaemfeet++;
+  }
+
+  if (grausubida < 0) {
+    alturaemfeet--;
+  }
+
+  var alturafeet = alturaemfeet * 100;
+
+  if (alturaemfeet > 400) {
+    alturafeet = 40000
+  }
+  if (alturaemfeet < 3) {
+    alturafeet = 300
+  }
+
+  noStroke();
+  fill(255, 255);
+  textSize(diametroellipse / 5);
+  textStyle(BOLD);
+  if (alturaemfeet > 400) {
+    fill(255, 0, 0, 255)
+  }
+
+  text(alturafeet + ' ft', 0, diametroellipse * 0.75);
+
+  var alturameter = alturafeet / 3.28084
+
+  textStyle(NORMAL);
+  fill(255, 127);
+  text(round(alturameter) + ' m', 0, diametroellipse * 0.95);
+  pop();
+
+  pop();
+
+}
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
