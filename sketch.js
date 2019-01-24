@@ -221,6 +221,21 @@ function controladores() {
   rotate(-1 * rotacaoaviaolado);
   image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   // rect(0,0,diametroellipse,5)
+
+var graudesubida = rotacaoaviaolado;
+var contadorfeet = frameCount*rotacaoaviaolado;
+
+if (contadorfeet > 40000) {
+  var alturaemfeet = 40000;
+} else {
+  var alturaemfeet = contadorfeet;
+}
+
+if (contadorfeet < 300) {
+  var alturaemfeet = 300;
+}
+
+  text(alturaemfeet, 0,+diametroellipse*0.75);
   pop();
 
 
