@@ -1,4 +1,4 @@
-let alturaemfeet = 300
+let alturaemfeet = 30
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
@@ -254,17 +254,25 @@ noStroke();
 fill(255,255);
 textSize(diametroellipse/5);
 textStyle(BOLD);
-text(alturaemfeet+' ft', 0,diametroellipse*0.75);
 
-var alturaemmeter=alturaemfeet/3.28084
+var alturafeet=alturaemfeet*10;
+
+if (alturaemfeet>4000) {
+  alturafeet =40000
+}
+if (alturaemfeet<30) {
+  alturafeet =300
+}
+
+text(alturafeet+' ft', 0,diametroellipse*0.75);
+
+var alturameter=alturafeet/3.28084
 
 textStyle(NORMAL);
-  text(round(alturaemmeter)+' m', 0,diametroellipse*0.95);
+  text(round(alturameter)+' m', 0,diametroellipse*0.95);
   pop();
 
   pop();
-
-
 
 }
 
