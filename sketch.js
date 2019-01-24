@@ -229,21 +229,21 @@ function controladores() {
   // rect(0,0,diametroellipse,5)
   pop();
 
-var grausubida = 0;
 
-if (rotacaoaviaolado>1) {
-  grausubida ++;
+
+if (rotacaoaviaolado>3) {
+  var grausubida = 1;
 }
 
-if (rotacaoaviaolado<-1) {
-  grausubida --;
+if (rotacaoaviaolado<-3) {
+  var grausubida = -1;
 }
 
- if (grausubida > 1) {
+ if (grausubida > 0) {
    alturaemfeet ++;
 }
 
-if (grausubida < -1) {
+if (grausubida < 0) {
    alturaemfeet --;
 }
 
