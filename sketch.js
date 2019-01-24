@@ -265,7 +265,7 @@ noStroke();
 fill(255,255);
 textSize(diametroellipse/5);
 textStyle(BOLD);
-if (alturafeet=40000) {
+if (alturaemfeet>400) {
   fill (255,0,0,255)
 }
 
