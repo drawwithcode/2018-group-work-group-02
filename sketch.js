@@ -240,27 +240,23 @@ function controladores() {
   translate(diametroellipse, height - 1.6 * diametroellipse);
 
   push();
+  stroke(255, 255, 255, 255);
   if (alturaemfeet > 400) {
     stroke(255, 94, 77, 255);
   }
-
   if (alturaemfeet < 3) {
     stroke(255, 94, 77, 255);
-  } else {
-    stroke(255, 255, 255, 255);
   }
   ellipse(0, 0, diametroellipse, diametroellipse);
   translate(0, 0);
 
   rotate(-1 * rotacaoaviaolado);
+  image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   if (alturaemfeet > 400) {
     image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   }
   if (alturaemfeet < 3) {
     image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
-  }
-  else {
-    image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   }
   // rect(0,0,diametroellipse,5)
   pop();
@@ -308,10 +304,10 @@ function controladores() {
   textStyle(NORMAL);
   fill(255, 127);
   if (alturaemfeet > 400) {
-    fill(255, 94, 77, 255)
+    fill(255, 94, 77, 127)
   }
   if (alturaemfeet < 3) {
-    fill(255, 94, 77, 255)
+    fill(255, 94, 77, 127)
   }
   text(round(alturameter) + ' m', 0, diametroellipse * 0.95);
   pop();
