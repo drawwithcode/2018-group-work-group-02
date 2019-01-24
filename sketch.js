@@ -40,29 +40,6 @@ function relogiofundo() {
   // text(windowHeight, width / 2, height / 2 + 30);
 
 }
-
-function aviaouno() {
-
-  fill(192);
-  push();
-
-  // move the origin to the pivot point
-  translate(width / 2, height / 2.65);
-
-  // then pivot the grid
-  rotate(rotationZ);
-
-  push();
-  fill(0);
-  tint(255, 127);
-  image(aviao1, -width / 11.2, -width / 11.2, width / 5.6, width / 5.6);
-  pop();
-  //revert to original drawing state
-  // pop();
-
-  system.addParticle();
-  system.run();
-}
 function controladores() {
   push();
 
@@ -155,14 +132,33 @@ function controladores() {
   pop();
 
 }
+function aviaouno() {
+
+  fill(192);
+  push();
+
+  // move the origin to the pivot point
+  translate(width / 2, height / 2.65);
+
+  // then pivot the grid
+  rotate(rotationZ);
+
+  push();
+  fill(0);
+  tint(255, 127);
+  image(aviao1, -width / 11.2, -width / 11.2, width / 5.6, width / 5.6);
+  pop();
+  //revert to original drawing state
+  // pop();
+
+  system.addParticle();
+  system.run();
+}
+
 
 //OPACIDADE DO CONTRAIL
 
-  var opacidadeContrail = 25;
-
-if (alturaemfeet<50) {
-  var opacidadeContrail = 0;
-}
+var opacidadeContrail = 25;
 
 // A simple Particle class
 var Particle = function(position) {
