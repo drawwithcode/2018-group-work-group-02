@@ -263,6 +263,7 @@ function controladores() {
     var grausubida = -1;
   }
 
+<<<<<<< HEAD
   if (grausubida > 0) {
     alturaemfeet++;
   }
@@ -270,6 +271,31 @@ function controladores() {
   if (grausubida < 0) {
     alturaemfeet--;
   }
+=======
+if (rotacaoaviaolado>3) {
+  var grausubida = 1;
+}
+
+if (rotacaoaviaolado<-3) {
+  var grausubida = -1;
+}
+
+ if (grausubida > 0) {
+   alturaemfeet ++;
+}
+
+if (grausubida < 0) {
+   alturaemfeet --;
+}
+
+// if (grausubida = 0) {
+//    alturaemfeet = alturaemfeet;
+// }
+noStroke();
+fill(255,255);
+textSize(diametroellipse/5);
+textStyle(BOLD);
+>>>>>>> parent of 0f3fbc4... feet 16
 
   var alturafeet = alturaemfeet * 100;
 
@@ -280,6 +306,7 @@ function controladores() {
     alturafeet = 300
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   noStroke();
   fill(255, 255);
@@ -299,6 +326,9 @@ if (alturafeet=40000) {
 >>>>>>> parent of d54c735... Update sketch.js
 
   text(alturafeet + ' ft', 0, diametroellipse * 0.75);
+=======
+text(alturafeet+' ft', 0,diametroellipse*0.75);
+>>>>>>> parent of 0f3fbc4... feet 16
 
   var alturameter = alturafeet / 3.28084
 
