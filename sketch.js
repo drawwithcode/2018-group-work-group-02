@@ -250,10 +250,7 @@ if (grausubida < 0) {
 // if (grausubida = 0) {
 //    alturaemfeet = alturaemfeet;
 // }
-noStroke();
-fill(255,255);
-textSize(diametroellipse/5);
-textStyle(BOLD);
+
 
 var alturafeet=alturaemfeet*100;
 
@@ -262,6 +259,14 @@ if (alturaemfeet>400) {
 }
 if (alturaemfeet<3) {
   alturafeet =300
+}
+
+noStroke();
+fill(255,255);
+textSize(diametroellipse/5);
+textStyle(BOLD);
+if (alturafeet=40000) {
+  fill (255,0,0,255)
 }
 
 text(alturafeet+' ft', 0,diametroellipse*0.75);
