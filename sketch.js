@@ -1,4 +1,4 @@
-let alturaemfeet = 30
+let alturaemfeet = 3
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
@@ -255,7 +255,7 @@ fill(255,255);
 textSize(diametroellipse/5);
 textStyle(BOLD);
 
-var alturafeet=alturaemfeet*10;
+var alturafeet=alturaemfeet*100;
 
 if (alturaemfeet>4000) {
   alturafeet =40000
