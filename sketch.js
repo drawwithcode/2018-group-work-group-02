@@ -86,9 +86,10 @@ if (alturaemfeet>100) {
 if (alturaemfeet>50) {
   var opacidadeContrail = 5;
 }
-else {
+if (alturaemfeet<50) {
   var opacidadeContrail = 0;
 }
+
 
 // A simple Particle class
 var Particle = function(position) {
