@@ -1,4 +1,5 @@
 let alturaemfeet = 3
+var copiaalturaemfeet = alturaemfeet
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
