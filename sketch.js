@@ -66,29 +66,30 @@ function aviaouno() {
 
 //OPACIDADE DO CONTRAIL
 
-
-if (alturaemfeet>300) {
   var opacidadeContrail = 25;
-}
 
-if (alturaemfeet>250) {
-  var opacidadeContrail = 20;
-}
-
-if (alturaemfeet>200) {
-  var opacidadeContrail = 15;
-}
-
-if (alturaemfeet>100) {
-  var opacidadeContrail = 10;
-}
-
-if (alturaemfeet>50) {
-  var opacidadeContrail = 5;
-}
-// if (alturaemfeet<50) {
-//   var opacidadeContrail = 0;
+// if (alturaemfeet>300) {
+//   var opacidadeContrail = 25;
 // }
+//
+// if (alturaemfeet>250) {
+//   var opacidadeContrail = 20;
+// }
+//
+// if (alturaemfeet>200) {
+//   var opacidadeContrail = 15;
+// }
+//
+// if (alturaemfeet>100) {
+//   var opacidadeContrail = 10;
+// }
+//
+// if (alturaemfeet>50) {
+//   var opacidadeContrail = 5;
+// }
+if (alturaemfeet<50) {
+  var opacidadeContrail = 0;
+}
 
 
 // A simple Particle class
