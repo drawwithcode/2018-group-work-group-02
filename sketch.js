@@ -34,7 +34,7 @@ function relogiofundo() {
   //TEXTO PARA TESTE
   textSize(20);
   textAlign(CENTER);
-  textFont("Monospace");
+  textFont("Josefin Sans");
   text(segundosdia, width / 2, height / 2 - 30);
   text(round(segundosdiaaltura), width / 2, height / 2);
   text(windowHeight, width / 2, height / 2 + 30);
@@ -240,22 +240,26 @@ if (rotacaoaviaolado<-3) {
 }
 
  if (grausubida > 0) {
-   alturaemfeet ++;
+   alturaemfeet +100;
 }
 
 if (grausubida < 0) {
-   alturaemfeet --;
+   alturaemfeet -100;
 }
 
 // if (grausubida = 0) {
 //    alturaemfeet = alturaemfeet;
 // }
+noStroke();
+fill(255,255);
+textSize(diametroellipse/5);
+textStyle(BOLD);
+text(alturaemfeet+' ft', 0,diametroellipse*0.75);
 
- text(alturaemfeet, 0,diametroellipse*0.75);
+var alturaemmeter=alturaemfeet/3.28084
 
-
-
-  text(round(grausubida), 0,diametroellipse*0.95);
+textStyle(NORMAL);
+  text(round(alturaemmeter)+' m', 0,diametroellipse*0.95);
   pop();
 
   pop();
