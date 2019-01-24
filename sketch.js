@@ -213,17 +213,25 @@ function controladores() {
   text(rotacaoaviaolado, width / 2, height / 1.5 - 30);
   noFill();
 
+  //AREA DO CIRCULO COM aviaolado
   strokeWeight(diametroellipse / 50);
   translate(diametroellipse, height - 1.6 * diametroellipse);
+
+  push();
+
   ellipse(0, 0, diametroellipse, diametroellipse);
   translate(0, 0);
 
   rotate(-1 * rotacaoaviaolado);
   image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   // rect(0,0,diametroellipse,5)
+  pop();
 
-var graudesubida = rotacaoaviaolado;
-var contadorfeet = frameCount*rotacaoaviaolado;
+  //TEXT INFO ON HEIGHT
+var grausubida = frameCount+rotacaoaviaolado*30;
+var graudescida = frameCount-rotacaoaviaolado*30
+
+var contadorfeet = grausubida-graudescida;
 
 if (contadorfeet > 40000) {
   var alturaemfeet = 40000;
@@ -235,8 +243,15 @@ if (contadorfeet < 300) {
   var alturaemfeet = 300;
 }
 
-  text(alturaemfeet, 0,+diametroellipse*0.75);
+  text(alturaemfeet, 0,diametroellipse*0.75);
+
+  var alturaemmeter = alturaemfeet/3.28084;
+
+  text(frameCount, 0,diametroellipse*0.95);
   pop();
+
+  pop();
+
 
 
 }
