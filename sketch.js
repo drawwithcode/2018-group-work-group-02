@@ -229,31 +229,28 @@ function controladores() {
   // rect(0,0,diametroellipse,5)
   pop();
 
-// var grausubida = 0;
-//
-// if (rotacaoaviaolado>1) {
-//   grausubida ++;
-// }
-//
-// if (rotacaoaviaolado<0) {
-//   grausubida --;
-// }
+if (rotacaoaviaolado>1) {
+  grausubida ++;
+}
 
-// var alturaemfeet = 300+grausubida;
+if (rotacaoaviaolado<-1) {
+  grausubida --;
+}
 
-// var grausubida = -1.2;
+var grausubida = 0;
+// var alturaemfeet = 300;
 
- if (rotacaoaviaolado > 1) {
+ if (grausubida > 1) {
    alturaemfeet ++;
 }
 
-if (rotacaoaviaolado < -1) {
+if (grausubida < -1) {
    alturaemfeet --;
 }
 
-if (grausubida = 0) {
-   var alturaemfeet = alturaemfeet;
-}
+// if (grausubida = 0) {
+//    alturaemfeet = alturaemfeet;
+// }
 
  text(alturaemfeet, 0,diametroellipse*0.75);
 
