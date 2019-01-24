@@ -280,6 +280,7 @@ function controladores() {
     alturafeet = 300
   }
 
+<<<<<<< HEAD
   noStroke();
   fill(255, 255);
   textSize(diametroellipse / 5);
@@ -287,6 +288,15 @@ function controladores() {
   if (alturaemfeet > 400) {
     fill(255, 0, 0, 255)
   }
+=======
+noStroke();
+fill(255,255);
+textSize(diametroellipse/5);
+textStyle(BOLD);
+if (alturafeet=40000) {
+  fill (255,0,0,255)
+}
+>>>>>>> parent of d54c735... Update sketch.js
 
   text(alturafeet + ' ft', 0, diametroellipse * 0.75);
 
