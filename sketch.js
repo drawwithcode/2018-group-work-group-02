@@ -34,7 +34,7 @@ function relogiofundo() {
   textAlign(CENTER);
   textFont("Monospace");
   text(segundosdia, width / 2, height / 2 - 30);
-  text(segundosdiaaltura, width / 2, height / 2);
+  text(round(segundosdiaaltura), width / 2, height / 2);
   text(windowHeight, width / 2, height / 2 + 30);
 
 }
@@ -194,16 +194,16 @@ function controladores() {
   } else {
 
   }
-
-  if (rotationX > 30) {
-    var rotacaoaviaolado = 30;
-  } else {
-    var rotacaoaviaolado = rotationX;
-  }
-
-  if (rotationX < -30) {
-    var rotacaoaviaolado = -30;
-  }
+    var rotacaoaviaolado = 12;
+  // if (rotationX > 30) {
+  //   var rotacaoaviaolado = 30;
+  // } else {
+  //   var rotacaoaviaolado = rotationX;
+  // }
+  //
+  // if (rotationX < -30) {
+  //   var rotacaoaviaolado = -30;
+  // }
 
   if (rotationX > 30) {
       stroke(255,0,0, 255);
@@ -228,26 +228,31 @@ function controladores() {
   pop();
 
   //TEXT INFO ON HEIGHT
-var grausubida = frameCount+rotacaoaviaolado*30;
-var graudescida = -frameCount+rotacaoaviaolado*30
+// var grausubida = frameCount+rotacaoaviaolado*30;
+// var graudescida = -frameCount+rotacaoaviaolado*30
+//
+// var contadorfeet = 300+grausubida;
+//
+//
 
-var contadorfeet = 300+grausubida+graudescida;
+var maisalto = 0;
+var maisbaixo = 0;
 
-if (contadorfeet > 40000) {
-  var alturaemfeet = 40000;
-} else {
-  var alturaemfeet = contadorfeet;
+if (rotacaoaviaolado>0) {
+  maisalto ++;
 }
 
-if (contadorfeet < 300) {
-  var alturaemfeet = 300;
+if (rotacaoaviaolado<0) {
+  maisbaixo --;
 }
+
+var alturaemfeet = 300+maisalto+maisbaixo;
 
   text(alturaemfeet, 0,diametroellipse*0.75);
 
-  var alturaemmeter = alturaemfeet/3.28084;
+  var alturaemmeter = 456.76;
 
-  text(frameCount, 0,diametroellipse*0.95);
+  text(round(maisalto), 0,diametroellipse*0.95);
   pop();
 
   pop();
