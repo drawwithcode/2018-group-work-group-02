@@ -1,4 +1,4 @@
-let alturaemfeet = 40000
+let alturaemfeet = 300
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
