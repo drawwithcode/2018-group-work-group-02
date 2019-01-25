@@ -209,6 +209,8 @@ ParticleSystem2.prototype.run = function() {
 function controladores() {
   push();
 
+  var alturafeet = alturaemfeet * 100;
+
   if (windowWidth > windowHeight) {
     var diametroellipse = height / 7;
   } else {
@@ -282,7 +284,7 @@ function controladores() {
     alturafeet = 300
   }
 
-  var alturafeet = alturaemfeet * 100;
+
 
   noStroke();
   fill(255, 255);
