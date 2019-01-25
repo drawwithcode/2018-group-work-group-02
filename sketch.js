@@ -311,7 +311,7 @@ function controladores() {
     fill(255, 94, 77, 255)
   }
 
-  text(alturafeet + ' ft', 0, diametroellipse * 0.75);
+  text(round(alturafeet) + ' ft', 0, diametroellipse * 0.75);
 
   var alturameter = alturafeet / 3.28084
 
@@ -331,7 +331,9 @@ function controladores() {
 
   pop();
 
-  //TEMPERATURA
+  //END OF ALTITUDE
+
+  //TEMPERATURA STARTS
 
   push();
   strokeWeight(diametroellipse / 50);
