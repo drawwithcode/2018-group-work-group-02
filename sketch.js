@@ -307,11 +307,11 @@ function controladores() {
 
   textStyle(NORMAL);
   fill(255, 127);
-  if (alturaemfeet > 400) {
+  if (alturaemfeet > 399.9) {
     alturaemfeet = 400;
     fill(255, 94, 77, 127);
   }
-  if (alturaemfeet < 3) {
+  if (alturaemfeet < 2.99) {
     alturaemfeet = 3;
     fill(255, 94, 77, 127)
   }
