@@ -209,7 +209,7 @@ ParticleSystem2.prototype.run = function() {
 function controladores() {
   push();
 
-  var alturafeet = alturaemfeet * 100;
+
 
   if (windowWidth > windowHeight) {
     var diametroellipse = height / 7;
@@ -236,28 +236,32 @@ function controladores() {
   noFill();
 
   //AREA DO CIRCULO COM aviaolado
+
   strokeWeight(diametroellipse / 50);
   translate(diametroellipse, height - 1.6 * diametroellipse);
 
   push();
+  var alturafeet = alturaemfeet * 100;
+    // var alturafeet = 3000;
   stroke(255, 255, 255, 255);
-  if (alturafeet > 40000) {
+  if (alturafeet >= 40000) {
     stroke(255, 94, 77, 255);
   }
-  if (alturafeet < 300) {
+  if (alturafeet <= 300) {
     stroke(255, 94, 77, 255);
   }
   ellipse(0, 0, diametroellipse, diametroellipse);
   translate(0, 0);
 
   rotate(-1 * rotacaoaviaolado);
-  image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
-  if (alturafeet > 40000) {
+  if (alturafeet >= 40000 || alturafeet <= 300) {
     image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
+  }else {
+    image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   }
-  if (alturafeet < 300) {
-    image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
-  }
+  // if (alturafeet <= 300) {
+  //   image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
+  // }
 
   pop();
 
@@ -290,10 +294,12 @@ function controladores() {
   fill(255, 255);
   textSize(diametroellipse / 5);
   textStyle(BOLD);
-  if (alturaemfeet > 400) {
-    fill(255, 94, 77, 255)
+  if (alturafeet >= 40000) {
+    alturafeet = 40000;
+    fill(255, 94, 77, 255);
   }
-  if (alturaemfeet < 3) {
+  if (alturafeet <= 300) {
+    alturafeet = 300;
     fill(255, 94, 77, 255)
   }
 
@@ -303,20 +309,13 @@ function controladores() {
 
   textStyle(NORMAL);
   fill(255, 127);
-  if (alturaemfeet > 399.9) {
-    alturaemfeet = 400;
+  if (alturafeet >= 40000) {
+    alturafeet = 40000;
     fill(255, 94, 77, 127);
   }
-  if (alturaemfeet < 2.99) {
-    alturaemfeet = 3;
-    fill(255, 94, 77, 127)
-  }
-  if (alturafeet > 40000) {
-    alturafeet = 400;
+  if (alturafeet <= 300) {
 
-  }
-  if (alturafeet < 300) {
-    alturafeet = 300;
+    fill(255, 94, 77, 127)
   }
   text(round(alturameter) + ' m', 0, diametroellipse * 0.95);
 
