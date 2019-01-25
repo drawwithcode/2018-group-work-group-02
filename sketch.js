@@ -308,11 +308,11 @@ function controladores() {
   textStyle(NORMAL);
   fill(255, 127);
   if (alturaemfeet > 400) {
-    alturaemfeet = 400;
+    alturafeet = 40000;
     fill(255, 94, 77, 127);
   }
   if (alturaemfeet < 3) {
-    alturaemfeet = 300;
+    alturafeet = 300;
     fill(255, 94, 77, 127)
   }
   // text(round(alturameter) + ' m', 0, diametroellipse * 0.95);
