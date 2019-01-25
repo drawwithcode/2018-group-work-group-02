@@ -315,7 +315,9 @@ function controladores() {
     alturaemfeet = 300;
     fill(255, 94, 77, 127)
   }
-  text(round(alturameter) + ' m', 0, diametroellipse * 0.95);
+  // text(round(alturameter) + ' m', 0, diametroellipse * 0.95);
+  text(round(alturaemfeet) + ' ft', 0, diametroellipse * 0.95);
+
   pop();
 
   pop();
