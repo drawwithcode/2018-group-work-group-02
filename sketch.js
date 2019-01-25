@@ -279,14 +279,16 @@ function controladores() {
     alturaemfeet--;
   }
 
+  if (alturaemfeet > 400) {
+    alturafeet = 40000
+  }
+  if (alturaemfeet < 3) {
+    alturafeet = 300
+  }
+
   var alturafeet = alturaemfeet * 100;
 
-  // if (alturaemfeet > 400) {
-  //   alturafeet = 40000
-  // }
-  // if (alturaemfeet < 3) {
-  //   alturafeet = 300
-  // }
+
 
   noStroke();
   fill(255, 255);
