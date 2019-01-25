@@ -241,25 +241,33 @@ function controladores() {
   translate(diametroellipse, height - 1.6 * diametroellipse);
 
   push();
+  if (alturaemfeet > 400) {
+    alturaemfeet=401
+  }
+
+  if (alturaemfeet < 3) {
+    alturaemfeet=2.9
+  }
+
   var alturafeet = alturaemfeet * 100;
     // var alturafeet = 3000;
   stroke(255, 255, 255, 255);
-  if (alturafeet >= 40000) {
+  if (alturafeet > 40000) {
     stroke(255, 94, 77, 255);
   }
-  if (alturafeet <= 300) {
+  if (alturafeet < 300) {
     stroke(255, 94, 77, 255);
   }
   ellipse(0, 0, diametroellipse, diametroellipse);
   translate(0, 0);
 
   rotate(-1 * rotacaoaviaolado);
-  if (alturafeet >= 40000 || alturafeet <= 300) {
+  if (alturafeet > 40000 || alturafeet < 300) {
     image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   }else {
     image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   }
-  // if (alturafeet <= 300) {
+  // if (alturafeet < 300) {
   //   image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   // }
 
@@ -294,11 +302,11 @@ function controladores() {
   fill(255, 255);
   textSize(diametroellipse / 5);
   textStyle(BOLD);
-  if (alturafeet >= 40000) {
+  if (alturafeet > 40000) {
     alturafeet = 40000;
     fill(255, 94, 77, 255);
   }
-  if (alturafeet <= 300) {
+  if (alturafeet < 300) {
     alturafeet = 300;
     fill(255, 94, 77, 255)
   }
@@ -309,11 +317,11 @@ function controladores() {
 
   textStyle(NORMAL);
   fill(255, 127);
-  if (alturafeet >= 40000) {
+  if (alturafeet > 40000) {
     alturafeet = 40000;
     fill(255, 94, 77, 127);
   }
-  if (alturafeet <= 300) {
+  if (alturafeet < 300) {
 
     fill(255, 94, 77, 127)
   }
