@@ -302,11 +302,11 @@ function controladores() {
   fill(255, 255);
   textSize(diametroellipse / 5);
   textStyle(BOLD);
-  if (alturafeet > 40000) {
+  if (alturaemfeet > 400) {
     alturafeet = 40000;
     fill(255, 94, 77, 255);
   }
-  if (alturafeet < 300) {
+  if (alturaemfeet < 3) {
     alturafeet = 300;
     fill(255, 94, 77, 255)
   }
@@ -317,11 +317,11 @@ function controladores() {
 
   textStyle(NORMAL);
   fill(255, 127);
-  if (alturafeet > 40000) {
+  if (alturaemfeet > 400) {
     alturafeet = 40000;
     fill(255, 94, 77, 127);
   }
-  if (alturafeet < 300) {
+  if (alturaemfeet < 3) {
 
     fill(255, 94, 77, 127)
   }
