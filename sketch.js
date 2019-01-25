@@ -200,11 +200,9 @@ ParticleSystem2.prototype.run = function() {
     if (p.isDead()) {
       this.particles.splice(i, 1);
     }
-
   }
   //POP THAT CUTS TRANSLATE
   pop();
-
 
 }
 // ALTITUDE
@@ -233,8 +231,6 @@ function controladores() {
     var rotacaoaviaolado = -30;
   }
 
-
-
   noFill();
 
   //AREA DO CIRCULO COM aviaolado
@@ -254,13 +250,13 @@ function controladores() {
 
   rotate(-1 * rotacaoaviaolado);
   image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
-  if (alturaemfeet > 400) {
+  if (alturafeet > 40000) {
     image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   }
-  if (alturaemfeet < 3) {
+  if (alturafeet < 300) {
     image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   }
-  // rect(0,0,diametroellipse,5)
+
   pop();
 
   if (rotacaoaviaolado > 3) {
@@ -287,8 +283,6 @@ function controladores() {
   }
 
   var alturafeet = alturaemfeet * 100;
-
-
 
   noStroke();
   fill(255, 255);
@@ -322,8 +316,7 @@ function controladores() {
   if (alturafeet < 300) {
     alturafeet = 300;
   }
-  // text(round(alturameter) + ' m', 0, diametroellipse * 0.95);
-  text(round(alturaemfeet) + ' ft', 0, diametroellipse * 0.95);
+  text(round(alturameter) + ' m', 0, diametroellipse * 0.95);
 
   pop();
 
