@@ -315,6 +315,13 @@ function controladores() {
     alturaemfeet = 3;
     fill(255, 94, 77, 127)
   }
+  if (alturafeet > 40000) {
+    alturafeet = 400;
+
+  }
+  if (alturafeet < 300) {
+    alturafeet = 300;
+  }
   // text(round(alturameter) + ' m', 0, diametroellipse * 0.95);
   text(round(alturaemfeet) + ' ft', 0, diametroellipse * 0.95);
 
