@@ -1,4 +1,5 @@
-let alturaemfeet = 3
+let alturaemfeet = 3;
+let timertemp =10;
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
@@ -7,6 +8,7 @@ function setup() {
   aviao1 = loadImage("assets/aviao1.svg");
   aviaolado = loadImage("assets/aviaolado.svg");
   aviaoladover = loadImage("assets/aviaoladover.svg");
+  tempicon = loadImage("assets/tempicon.svg");
   system = new ParticleSystem(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
   system2 = new ParticleSystem2(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
 
@@ -67,7 +69,7 @@ function aviaouno() {
 
 //OPACIDADE DO CONTRAIL
 
- var opacidadeContrail = 25;
+var opacidadeContrail = 25;
 // if (alturaemfeet>300) {
 //   var opacidadeContrail = 25;
 // }
@@ -304,9 +306,11 @@ function controladores() {
   textStyle(NORMAL);
   fill(255, 127);
   if (alturaemfeet > 400) {
-    fill(255, 94, 77, 127)
+    alturaemfeet = 40000;
+    fill(255, 94, 77, 127);
   }
   if (alturaemfeet < 3) {
+    alturaemfeet = 300;
     fill(255, 94, 77, 127)
   }
   text(round(alturameter) + ' m', 0, diametroellipse * 0.95);
@@ -314,7 +318,115 @@ function controladores() {
 
   pop();
 
+  //TEMPERATURA
+
+  push();
+  strokeWeight(diametroellipse / 50);
+  translate(width - diametroellipse, height - 1.6 * diametroellipse);
+
+  push();
+  noStroke();
+
+  //TEMP VARIABLES
+
+  // var overBox = false;
+  var locked = false;
+  var xOffset = 0.0;
+  var yOffset = 0.0;
+
+  var tempsec = 0;
+  var tempinitial = 10+(-1*alturafeet/610.76);
+  var tempcelsius = tempinitial+(timertemp-10);
+  var templimit=0;
+  var tempvaryrub = tempcelsius-tempinitial;
+
+  if (tempcelsius>(tempinitial+9)) {
+    templimit =1
+  }
+
+  // Test if the cursor is over the box
+  if (mouseX > windowWidth - diametroellipse * 1.5 && mouseX < windowWidth - diametroellipse / 2 &&
+    mouseY > height - 1.6 * diametroellipse - diametroellipse / 2 && mouseY < height - 1.6 * diametroellipse + diametroellipse / 2 && mouseIsPressed) {
+    // overBox = true;
+    if (!locked) {
+      fill(255/5, 94/5, 77/5, 100);
+      tempsec = 1;
+    }
+  } else {
+
+    fill(0, 0, 0, 127);
+    // overBox = false;
+  }
+// COLOR VARIATION ON TEMP ellipse
+  if (tempvaryrub >0) {
+      fill(255/4, 94/4, 77/4, 140);
+  }
+  if (tempvaryrub >1) {
+      fill(255/3, 94/3, 77/3, 152);
+  }
+  if (tempvaryrub >2) {
+      fill(255/2, 94/2, 77/2, 165);
+  }
+  if (tempvaryrub >3) {
+      fill(255/1.5, 94/1.5, 77/1.5, 178);
+  }
+  if (tempvaryrub >4) {
+      fill(255/1.2, 94/1.2, 77/1.2, 191);
+  }
+  if (tempvaryrub >5) {
+      fill(255, 94, 77, 204);
+  }
+  if (tempvaryrub >6) {
+      fill(255, 94, 77, 216);
+  }
+  if (tempvaryrub >7) {
+      fill(255, 94, 77, 229);
+  }
+  if (tempvaryrub >8) {
+      fill(255, 94, 77, 242);
+  }
+  if (tempvaryrub >9) {
+      fill(255, 94, 77, 255);
+  }
+//END OF COLOR VARIATION
+  ellipse(0, 0, diametroellipse, diametroellipse);
+
+  if (tempsec == 1 && frameCount % 60 == 0 && timertemp > 0) {
+    timertemp ++;
+  }
+  if (tempsec == 0 && frameCount % 60 == 0 && timertemp > 0) {
+    timertemp --;
+  }
+  if (timertemp>20) {
+    timertemp=20
+  }
+  if (timertemp<10) {
+    timertemp=10
+  }
+
+  image(tempicon, -diametroellipse / 3, -diametroellipse / 3, diametroellipse / 1.5, diametroellipse / 1.5)
+
+//TEXTO TEMPERATURA
+
+noStroke();
+fill(255, 255);
+textSize(diametroellipse / 5);
+textStyle(BOLD);
+  text(round(tempcelsius) + ' ˚C', 0, diametroellipse * 0.75);
+
+var tempfarenheit = tempcelsius*1.8+32;
+
+  textStyle(NORMAL);
+  fill(255, 127);
+    text(round(tempvaryrub) + ' ˚F', 0, diametroellipse * 0.95);
+
+  // text(timertemp, 0, 0);
+
+  pop();
+
 }
+
+
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
