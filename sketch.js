@@ -239,10 +239,10 @@ function controladores() {
 
   push();
   stroke(255, 255, 255, 255);
-  if (alturaemfeet > 400) {
+  if (alturafeet > 40000) {
     stroke(255, 94, 77, 255);
   }
-  if (alturaemfeet < 3) {
+  if (alturafeet < 300) {
     stroke(255, 94, 77, 255);
   }
   ellipse(0, 0, diametroellipse, diametroellipse);
