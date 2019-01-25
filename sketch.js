@@ -433,7 +433,7 @@ var tempfarenheit = tempcelsius*1.8+32;
 
   textStyle(NORMAL);
   fill(255, 127);
-    text(round(tempvaryrub) + ' ˚F', 0, diametroellipse * 0.95);
+    text(round(tempfarenheit) + ' ˚F', 0, diametroellipse * 0.95);
 
   // text(timertemp, 0, 0);
 
