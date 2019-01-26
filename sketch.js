@@ -1,4 +1,4 @@
-var alturaemfeet = 3;
+var alturaemfeet = 29;
 let timertemp = 10;
 var clicks = 0;
 var humimouseover = 0;
@@ -640,7 +640,7 @@ function controladores() {
 
   //TEXT WARNINGS
 
-  translate(width/2, height-diametroellipse*4.5)
+  translate(width/2, height-diametroellipse*4)
           // stroke(255,255);
           // noFill();
           // rect(0,0,width/3,diametroellipse*1.5);
@@ -652,17 +652,19 @@ function controladores() {
 
         var opacidadetexto = 0;
 
-        if (alturaemfeet >15 && alturaemfeet <300) {
-          opacidadetexto = 255-(opacidadeWingtip*10)
+
+
+        if (alturaemfeet >20 && alturaemfeet <300) {
+          opacidadetexto = 255-(opacidadeContrail*50)
 
         }
+        if (alturaemfeet <30) {
+          opacidadetexto = 255-(opacidadeWingtip*30)
 
-        if (alturaemfeet >15 && alturaemfeet <300) {
-          opacidadetexto = 255-(opacidadeContrail*10)
+        }
           fill(255,opacidadetexto)
           text(warningupordown, 0, diametroellipse/2, width/2, diametroellipse*1.5); // Text wraps within text box
 
-        }
 
 
 
