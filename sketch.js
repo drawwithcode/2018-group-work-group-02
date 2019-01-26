@@ -1,4 +1,4 @@
-var alturaemfeet = 3;
+var alturaemfeet = 150;
 let timertemp = 10;
 var clicks = 0;
 var humimouseover = 0;
@@ -640,18 +640,22 @@ function controladores() {
 
   //TEXT WARNINGS
 
-  translate(width/2, height-diametroellipse*3.75)
+  translate(width/2, height/1.5)
           // stroke(255,255);
           // noFill();
           // rect(0,0,width/3,diametroellipse*1.5);
           noStroke();
           fill(255,255);
           rectMode(CENTER);
-          let warningupordown = 'Whooops! No contrails. Increase altitude for contrail or lower for wingtip contrail.';
-        textStyle(BOLD);
+          let warningupordown = 'Increase altitude for contrail or lower for wingtip contrail.';
+
 
         var opacidadetexto = 0;
+        var widthtextbox = width/3;
 
+        if (diametroellipse<81) {
+          widthtextbox = width/2;
+        }
 
 
         if (alturaemfeet >20 && alturaemfeet <300) {
@@ -663,7 +667,12 @@ function controladores() {
 
         }
           fill(255,opacidadetexto)
-          text(warningupordown, 0, diametroellipse/2, width/3, diametroellipse*1.5); // Text wraps within text box
+          textStyle(BOLD);
+          text('Whooops! No contrails')
+          text('Whooops! No contrails', 0,-diametroellipse/2);
+          textStyle(NORMAL);
+          fill(255,127)
+          text(warningupordown, 0, diametroellipse/2, widthtextbox, diametroellipse*1.5); // Text wraps within text box
 
 
 
