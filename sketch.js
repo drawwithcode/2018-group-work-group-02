@@ -668,10 +668,10 @@ function controladores() {
         }
           fill(255,opacidadetexto)
           textStyle(BOLD);
-          text('Whooops! No contrails')
+
           text('Whooops! No contrails', 0,-diametroellipse/2);
           textStyle(NORMAL);
-          fill(255,127)
+          fill(255,0.5*opacidadetexto)
           text(warningupordown, 0, diametroellipse/2, widthtextbox, diametroellipse*1.5); // Text wraps within text box
 
 
