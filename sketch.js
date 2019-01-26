@@ -1,4 +1,4 @@
-var alturaemfeet = 29;
+var alturaemfeet = 3;
 let timertemp = 10;
 var clicks = 0;
 var humimouseover = 0;
@@ -640,7 +640,7 @@ function controladores() {
 
   //TEXT WARNINGS
 
-  translate(width/2, height-diametroellipse*4)
+  translate(width/2, height-diametroellipse*3.5)
           // stroke(255,255);
           // noFill();
           // rect(0,0,width/3,diametroellipse*1.5);
