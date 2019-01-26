@@ -647,7 +647,7 @@ function controladores() {
           noStroke();
           fill(255,255);
           rectMode(CENTER);
-          let warningupordown = 'Fly higher for contrail or lower for wingtip contrail';
+          let warningupordown = 'Whooops! No contrails. Increase altitude for contrail or lower for wingtip contrail.';
         textStyle(BOLD);
 
         var opacidadetexto = 0;
