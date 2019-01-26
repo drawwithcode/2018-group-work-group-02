@@ -3,6 +3,7 @@ let timertemp = 10;
 var clicks = 0;
 var humimouseover = 0;
 let opacidadeContrail = 1;
+let opacidadeWingtip = 1;
 let wingtipon = 1;
 let contrailon = 1;
 
@@ -67,27 +68,35 @@ function relogiofundo() {
 function aviaouno() {
 
   if (alturaemfeet < 30) {
-    opacidadeContrail = -1.08 * alturaemfeet + 32;
+    opacidadeWingtip = -1.08 * alturaemfeet + 32;
   }
 
-  if (alturaemfeet >= 200) {
-    opacidadeContrail = 0.25 * alturaemfeet - 50;
-  }
-  if (alturaemfeet >= 300) {
-    opacidadeContrail = 25;
+  if (alturaemfeet > 30) {
+    opacidadeWingtip=0;
   }
 
-  if (alturaemfeet < 30) {
-    wingtipon = 1
-  } else {
-    wingtipon = 0
+  if (alturaemfeet < 200) {
+    opacidadeContrail=0;
   }
 
   if (alturaemfeet > 200) {
-    contrailon = 1
-  } else {
-    contrailon = 0
+    opacidadeContrail = 0.25 * alturaemfeet - 50;
   }
+  if (alturaemfeet > 300) {
+    opacidadeContrail = 25;
+  }
+
+  // if (alturaemfeet < 30) {
+  //   wingtipon = 1
+  // } else {
+  //   wingtipon = 0
+  // }
+  //
+  // if (alturaemfeet > 200) {
+  //   contrailon = 1
+  // } else {
+  //   contrailon = 0
+  // }
 
   fill(192);
   push();
@@ -252,7 +261,7 @@ Particle3.prototype.update = function() {
 Particle3.prototype.display = function() {
   stroke(600, this.lifespan);
   strokeWeight(0);
-  fill(255, opacidadeContrail);
+  fill(255, opacidadeWingtip);
   ellipse(-width / 11.2, this.position.y - height / 90, width / 270, width / 60);
 };
 
@@ -310,7 +319,7 @@ Particle4.prototype.update = function() {
 Particle4.prototype.display = function() {
   stroke(600, this.lifespan);
   strokeWeight(0);
-  fill(255, opacidadeContrail);
+  fill(255, opacidadeWingtip);
   ellipse(+width / 11.2, this.position.y - height / 90, width / 270, width / 60);
 };
 
