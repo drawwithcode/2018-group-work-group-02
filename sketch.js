@@ -1,5 +1,7 @@
 let alturaemfeet = 3;
 let timertemp =10;
+var clicks = 0;
+  var humimouseover = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
@@ -9,8 +11,13 @@ function setup() {
   aviaolado = loadImage("assets/aviaolado.svg");
   aviaoladover = loadImage("assets/aviaoladover.svg");
   tempicon = loadImage("assets/tempicon.svg");
+  humidity1 = loadImage("assets/humidity1.svg");
+  humidity2 = loadImage("assets/humidity2.svg");
+  humidity3 = loadImage("assets/humidity3.svg");
+  humidity4 = loadImage("assets/humidity4.svg");
   system = new ParticleSystem(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
   system2 = new ParticleSystem2(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
+
 
 }
 
@@ -60,8 +67,6 @@ function aviaouno() {
   tint(255, 127);
   image(aviao1, -width / 11.2, -width / 11.2, width / 5.6, width / 5.6);
   pop();
-  //revert to original drawing state
-  // pop();
 
   system.addParticle();
   system.run();
@@ -205,6 +210,7 @@ ParticleSystem2.prototype.run = function() {
   pop();
 
 }
+
 // ALTITUDE
 function controladores() {
   push();
@@ -439,9 +445,64 @@ var tempfarenheit = tempcelsius*1.8+32;
 
   pop();
 
+//FIM TEMPERATURA
+
+//HUMIDITY STARTS
+
+  push();
+  strokeWeight(diametroellipse / 50);
+  // translate(width - diametroellipse/2, height - 3 * diametroellipse);
+
+  //TEMP VARIABLES
+
+  var humiincrease = 0;
+
+  // Test if the cursor is over the box
+
+  if (mouseX > windowWidth - diametroellipse * 1.5 && mouseX < windowWidth - diametroellipse / 2 &&
+    mouseY > height - 3 * diametroellipse - diametroellipse / 3 && mouseY < height - 3 * diametroellipse + diametroellipse / 1.5) {
+      humimouseover=1;
+    } else {
+        humimouseover=0;
+    }
+
+
+    if (clicks >4) {
+      clicks = 1;
+    }
+    if (clicks <1) {
+      clicks = 1;
+    }
+// OK
+
+if (clicks==1) {
+  image(humidity1, -diametroellipse/2,-diametroellipse*1.75, diametroellipse, diametroellipse)
+}
+if (clicks==2) {
+  image(humidity2, -diametroellipse/2,-diametroellipse*1.75, diametroellipse, diametroellipse)
+}
+if (clicks==3) {
+  image(humidity3, -diametroellipse/2,-diametroellipse*1.75, diametroellipse, diametroellipse)
+}
+if (clicks==4) {
+  image(humidity4, -diametroellipse/2,-diametroellipse*1.75, diametroellipse, diametroellipse)
 }
 
+  // textStyle(NORMAL);
+  // fill(255, 127);
+  //   text(clicks, 0, 0);
 
+  pop();
+  pop();
+
+}
+
+function mousePressed() {
+  if (humimouseover==1) {
+    clicks++
+  }
+
+}
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
