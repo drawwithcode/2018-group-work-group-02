@@ -17,7 +17,8 @@ function setup() {
   humidity4 = loadImage("assets/humidity4.svg");
   system = new ParticleSystem(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
   system2 = new ParticleSystem2(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
-
+  system3 = new ParticleSystem3(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
+  system4 = new ParticleSystem4(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
 
 }
 
@@ -61,7 +62,7 @@ function aviaouno() {
 
   // then pivot the grid
   rotate(rotationZ);
-
+  // text(opacidadeContrail, 0, 0);
   push();
   fill(0);
   tint(255, 127);
@@ -73,32 +74,34 @@ function aviaouno() {
 }
 
 //OPACIDADE DO CONTRAIL
+    var opacidadeContrail = 0;
 
-var opacidadeContrail = 25;
-// if (alturaemfeet>300) {
-//   var opacidadeContrail = 25;
-// }
-//
-// if (alturaemfeet>250) {
-//   var opacidadeContrail = 20;
-// }
-//
-// if (alturaemfeet>200) {
-//   var opacidadeContrail = 15;
-// }
-//
-// if (alturaemfeet>100) {
-//   var opacidadeContrail = 10;
-// }
-//
-// if (alturaemfeet>50) {
-//   var opacidadeContrail = 5;
-// }
-// else {
-//   var opacidadeContrail = 0;
-// }
+if (alturaemfeet < 30) {
+    opacidadeContrail = -1.08*alturaemfeet+32;
+}
 
-// A simple Particle class
+if (alturaemfeet >= 200) {
+    opacidadeContrail = 0.25*alturaemfeet-50;
+}
+if (alturaemfeet >= 300) {
+    opacidadeContrail = 25;
+}
+
+
+//PARTICLE control
+if (alturaemfeet <30) {
+  var wingtipon =1
+} else {
+    var wingtipon =0
+}
+
+if (alturaemfeet >=200) {
+  var contrailon =1
+} else {
+    var contrailon =0
+}
+
+// PARTICLE 1
 var Particle = function(position) {
   this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
@@ -144,19 +147,22 @@ ParticleSystem.prototype.addParticle = function() {
 ParticleSystem.prototype.run = function() {
   for (var i = this.particles.length - 1; i >= 0; i--) {
     var p = this.particles[i];
-    p.run();
+    if (contrailon==1) {
+      p.run();
+    }  else {
+    }
     if (p.isDead()) {
       this.particles.splice(i, 1);
     }
 
   }
 
+// PARTICLE 2
 
   system2.addParticle();
   system2.run();
 }
 
-// PARTICLE 2
 var Particle2 = function(position) {
   this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
@@ -201,7 +207,127 @@ ParticleSystem2.prototype.addParticle = function() {
 ParticleSystem2.prototype.run = function() {
   for (var i = this.particles.length - 1; i >= 0; i--) {
     var p = this.particles[i];
+    if (contrailon==1) {
+      p.run();
+    }  else {
+    }
+    if (p.isDead()) {
+      this.particles.splice(i, 1);
+    }
+  }
+
+
+// PARTICLE 3
+    system3.addParticle();
+    system3.run();
+  }
+var Particle3 = function(position) {
+  this.acceleration = createVector(0, 0.02);
+  this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
+  this.position = position.copy();
+  this.lifespan = 300;
+};
+
+Particle3.prototype.run = function() {
+  this.update();
+  this.display();
+};
+
+// Method to update position
+Particle3.prototype.update = function() {
+  this.velocity.add(this.acceleration);
+  this.position.add(this.velocity);
+  this.lifespan -= 2;
+};
+
+// Method to display
+Particle3.prototype.display = function() {
+  stroke(600, this.lifespan);
+  strokeWeight(0);
+  fill(255, opacidadeContrail);
+  ellipse(-width / 11.2, this.position.y-height/90, width / 270, width / 60);
+};
+
+// Is the particle still useful?
+Particle3.prototype.isDead = function() {
+  return this.lifespan < 2;
+};
+
+var ParticleSystem3 = function(position) {
+  this.origin = position.copy();
+  this.particles = [];
+};
+
+ParticleSystem3.prototype.addParticle = function() {
+  this.particles.push(new Particle3(this.origin));
+};
+
+ParticleSystem3.prototype.run = function() {
+  for (var i = this.particles.length - 1; i >= 0; i--) {
+    var p = this.particles[i];
+  if (wingtipon==1) {
     p.run();
+  }  else {
+
+  }
+    if (p.isDead()) {
+      this.particles.splice(i, 1);
+    }
+  }
+
+  // PARTICLE 4
+    system4.addParticle();
+    system4.run();
+  }
+var Particle4 = function(position) {
+  this.acceleration = createVector(0, 0.02);
+  this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
+  this.position = position.copy();
+  this.lifespan = 300;
+};
+
+Particle4.prototype.run = function() {
+  this.update();
+  this.display();
+};
+
+// Method to update position
+Particle4.prototype.update = function() {
+  this.velocity.add(this.acceleration);
+  this.position.add(this.velocity);
+  this.lifespan -= 2;
+};
+
+// Method to display
+Particle4.prototype.display = function() {
+  stroke(600, this.lifespan);
+  strokeWeight(0);
+  fill(255, opacidadeContrail);
+  ellipse(+width / 11.2, this.position.y-height/90, width / 270, width / 60);
+};
+
+// Is the particle still useful?
+Particle4.prototype.isDead = function() {
+  return this.lifespan < 2;
+};
+
+var ParticleSystem4 = function(position) {
+  this.origin = position.copy();
+  this.particles = [];
+};
+
+ParticleSystem4.prototype.addParticle = function() {
+  this.particles.push(new Particle4(this.origin));
+};
+
+ParticleSystem4.prototype.run = function() {
+  for (var i = this.particles.length - 1; i >= 0; i--) {
+    var p = this.particles[i];
+  if (wingtipon==1) {
+    p.run();
+  }  else {
+
+  }
     if (p.isDead()) {
       this.particles.splice(i, 1);
     }
@@ -473,7 +599,7 @@ var tempfarenheit = tempcelsius*1.8+32;
     if (clicks <1) {
       clicks = 1;
     }
-// OK
+
 
 if (clicks==1) {
   image(humidity1, -diametroellipse/2,-diametroellipse*1.75, diametroellipse, diametroellipse)
