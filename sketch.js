@@ -1,8 +1,8 @@
 let alturaemfeet = 3;
 let timertemp =10;
 var clicks = 0;
-  var humimouseover = 0;
-    var alturafeet = alturaemfeet * 100;
+var humimouseover = 0;
+let alturafeet = alturaemfeet * 100;
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
@@ -377,13 +377,28 @@ function controladores() {
   if (alturaemfeet > 400) {
     alturaemfeet=401
   }
-
   if (alturaemfeet < 3) {
     alturaemfeet=2.9
   }
+  if (rotacaoaviaolado > 3) {
+    var grausubida = 1;
+  }
+  if (rotacaoaviaolado < -3) {
+    var grausubida = -1;
+  }
+  if (grausubida > 0) {
+    alturaemfeet++;
+  }
+  if (grausubida < 0) {
+    alturaemfeet--;
+  }
+  if (alturaemfeet > 400) {
+    alturafeet = 40000
+  }
+  if (alturaemfeet < 3) {
+    alturafeet = 300
+  }
 
-
-    // var alturafeet = 3000;
   stroke(255, 255, 255, 255);
   if (alturafeet > 40000) {
     stroke(255, 94, 77, 255);
@@ -406,28 +421,6 @@ function controladores() {
 
   pop();
 
-  if (rotacaoaviaolado > 3) {
-    var grausubida = 1;
-  }
-
-  if (rotacaoaviaolado < -3) {
-    var grausubida = -1;
-  }
-
-  if (grausubida > 0) {
-    alturaemfeet++;
-  }
-
-  if (grausubida < 0) {
-    alturaemfeet--;
-  }
-
-  if (alturaemfeet > 400) {
-    alturafeet = 40000
-  }
-  if (alturaemfeet < 3) {
-    alturafeet = 300
-  }
 
 
 
