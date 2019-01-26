@@ -1,4 +1,4 @@
-var alturaemfeet = 150;
+var alturaemfeet = 3;
 let timertemp = 10;
 var clicks = 0;
 var humimouseover = 0;
@@ -639,7 +639,7 @@ function controladores() {
   // HUMIDITY END
 
   //TEXT WARNINGS
-
+  textSize(diametroellipse / 5);
   translate(width/2, height/1.5)
           // stroke(255,255);
           // noFill();
