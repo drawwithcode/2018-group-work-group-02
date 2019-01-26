@@ -1,9 +1,14 @@
-let alturaemfeet = 3;
-let timertemp =10;
+var alturaemfeet = 3;
+let timertemp = 10;
 var clicks = 0;
-  var humimouseover = 0;
+var humimouseover = 0;
+let opacidadeContrail = 1;
+let wingtipon = 1;
+let contrailon = 1;
 
 function setup() {
+
+
   createCanvas(windowWidth, windowHeight)
   angleMode(DEGREES)
   imgfundo = loadImage("assets/bg.png");
@@ -15,6 +20,7 @@ function setup() {
   humidity2 = loadImage("assets/humidity2.svg");
   humidity3 = loadImage("assets/humidity3.svg");
   humidity4 = loadImage("assets/humidity4.svg");
+
   system = new ParticleSystem(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
   system2 = new ParticleSystem2(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
   system3 = new ParticleSystem3(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
@@ -23,10 +29,16 @@ function setup() {
 }
 
 function draw() {
+
+
+
   background(0, 0, 0)
   relogiofundo();
   aviaouno();
   controladores();
+  // particulas();
+
+
 
 }
 
@@ -54,6 +66,29 @@ function relogiofundo() {
 
 function aviaouno() {
 
+  if (alturaemfeet < 30) {
+    opacidadeContrail = -1.08 * alturaemfeet + 32;
+  }
+
+  if (alturaemfeet >= 200) {
+    opacidadeContrail = 0.25 * alturaemfeet - 50;
+  }
+  if (alturaemfeet >= 300) {
+    opacidadeContrail = 25;
+  }
+
+  if (alturaemfeet < 30) {
+    wingtipon = 1
+  } else {
+    wingtipon = 0
+  }
+
+  if (alturaemfeet > 200) {
+    contrailon = 1
+  } else {
+    contrailon = 0
+  }
+
   fill(192);
   push();
 
@@ -62,7 +97,7 @@ function aviaouno() {
 
   // then pivot the grid
   rotate(rotationZ);
-  text(opacidadeContrail, 0, 0);
+  // text(opacidadeContrail, 0, 0);
   push();
   fill(0);
   tint(255, 127);
@@ -73,33 +108,8 @@ function aviaouno() {
   system.run();
 }
 
-//OPACIDADE DO CONTRAIL
-    var opacidadeContrail = 0;
+//OPACIDADE AND EXISTENCE OF CONTRAIL
 
-if (alturaemfeet < 30) {
-    opacidadeContrail = -1.08*alturaemfeet+32;
-}
-
-if (alturaemfeet >= 200) {
-    opacidadeContrail = 0.25*alturaemfeet-50;
-}
-if (alturaemfeet >= 300) {
-    opacidadeContrail = 25;
-}
-
-
-//PARTICLE control
-if (alturaemfeet <30) {
-  var wingtipon =1
-} else {
-    var wingtipon =0
-}
-
-if (alturaemfeet >=200) {
-  var contrailon =1
-} else {
-    var contrailon =0
-}
 
 // PARTICLE 1
 var Particle = function(position) {
@@ -147,17 +157,16 @@ ParticleSystem.prototype.addParticle = function() {
 ParticleSystem.prototype.run = function() {
   for (var i = this.particles.length - 1; i >= 0; i--) {
     var p = this.particles[i];
-    if (contrailon==1) {
+    if (contrailon == 1) {
       p.run();
-    }  else {
-    }
+    } else {}
     if (p.isDead()) {
       this.particles.splice(i, 1);
     }
 
   }
 
-// PARTICLE 2
+  // PARTICLE 2
 
   system2.addParticle();
   system2.run();
@@ -207,20 +216,19 @@ ParticleSystem2.prototype.addParticle = function() {
 ParticleSystem2.prototype.run = function() {
   for (var i = this.particles.length - 1; i >= 0; i--) {
     var p = this.particles[i];
-    if (contrailon==1) {
+    if (contrailon == 1) {
       p.run();
-    }  else {
-    }
+    } else {}
     if (p.isDead()) {
       this.particles.splice(i, 1);
     }
   }
 
 
-// PARTICLE 3
-    system3.addParticle();
-    system3.run();
-  }
+  // PARTICLE 3
+  system3.addParticle();
+  system3.run();
+}
 var Particle3 = function(position) {
   this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
@@ -245,7 +253,7 @@ Particle3.prototype.display = function() {
   stroke(600, this.lifespan);
   strokeWeight(0);
   fill(255, opacidadeContrail);
-  ellipse(-width / 11.2, this.position.y-height/90, width / 270, width / 60);
+  ellipse(-width / 11.2, this.position.y - height / 90, width / 270, width / 60);
 };
 
 // Is the particle still useful?
@@ -265,20 +273,20 @@ ParticleSystem3.prototype.addParticle = function() {
 ParticleSystem3.prototype.run = function() {
   for (var i = this.particles.length - 1; i >= 0; i--) {
     var p = this.particles[i];
-  if (wingtipon==1) {
-    p.run();
-  }  else {
+    if (wingtipon == 1) {
+      p.run();
+    } else {
 
-  }
+    }
     if (p.isDead()) {
       this.particles.splice(i, 1);
     }
   }
 
   // PARTICLE 4
-    system4.addParticle();
-    system4.run();
-  }
+  system4.addParticle();
+  system4.run();
+}
 var Particle4 = function(position) {
   this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
@@ -303,7 +311,7 @@ Particle4.prototype.display = function() {
   stroke(600, this.lifespan);
   strokeWeight(0);
   fill(255, opacidadeContrail);
-  ellipse(+width / 11.2, this.position.y-height/90, width / 270, width / 60);
+  ellipse(+width / 11.2, this.position.y - height / 90, width / 270, width / 60);
 };
 
 // Is the particle still useful?
@@ -323,11 +331,11 @@ ParticleSystem4.prototype.addParticle = function() {
 ParticleSystem4.prototype.run = function() {
   for (var i = this.particles.length - 1; i >= 0; i--) {
     var p = this.particles[i];
-  if (wingtipon==1) {
-    p.run();
-  }  else {
+    if (wingtipon == 1) {
+      p.run();
+    } else {
 
-  }
+    }
     if (p.isDead()) {
       this.particles.splice(i, 1);
     }
@@ -336,12 +344,9 @@ ParticleSystem4.prototype.run = function() {
   pop();
 
 }
-
 // ALTITUDE
 function controladores() {
   push();
-
-
 
   if (windowWidth > windowHeight) {
     var diametroellipse = height / 7;
@@ -374,15 +379,15 @@ function controladores() {
 
   push();
   if (alturaemfeet > 400) {
-    alturaemfeet=401
+    alturaemfeet = 401
   }
 
   if (alturaemfeet < 3) {
-    alturaemfeet=2.9
+    alturaemfeet = 2.9
   }
 
   var alturafeet = alturaemfeet * 100;
-    // var alturafeet = 3000;
+  // var alturafeet = 3000;
   stroke(255, 255, 255, 255);
   if (alturafeet > 40000) {
     stroke(255, 94, 77, 255);
@@ -396,7 +401,7 @@ function controladores() {
   rotate(-1 * rotacaoaviaolado);
   if (alturafeet > 40000 || alturafeet < 300) {
     image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
-  }else {
+  } else {
     image(aviaolado, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
   }
   // if (alturafeet < 300) {
@@ -414,7 +419,7 @@ function controladores() {
   }
 
   if (grausubida > 0) {
-    alturaemfeet++;
+  alturaemfeet++;
   }
 
   if (grausubida < 0) {
@@ -482,13 +487,13 @@ function controladores() {
   var yOffset = 0.0;
 
   var tempsec = 0;
-  var tempinitial = 10+(-1*alturafeet/610.76);
-  var tempcelsius = tempinitial+(timertemp-10);
-  var templimit=0;
-  var tempvaryrub = tempcelsius-tempinitial;
+  var tempinitial = 10 + (-1 * alturafeet / 610.76);
+  var tempcelsius = tempinitial + (timertemp - 10);
+  var templimit = 0;
+  var tempvaryrub = tempcelsius - tempinitial;
 
-  if (tempcelsius>(tempinitial+9)) {
-    templimit =1
+  if (tempcelsius > (tempinitial + 9)) {
+    templimit = 1
   }
 
   // Test if the cursor is over the box
@@ -496,7 +501,7 @@ function controladores() {
     mouseY > height - 1.6 * diametroellipse - diametroellipse / 2 && mouseY < height - 1.6 * diametroellipse + diametroellipse / 2 && mouseIsPressed) {
     // overBox = true;
     if (!locked) {
-      fill(255/5, 94/5, 77/5, 100);
+      fill(255 / 5, 94 / 5, 77 / 5, 100);
       tempsec = 1;
     }
   } else {
@@ -504,76 +509,76 @@ function controladores() {
     fill(0, 0, 0, 127);
     // overBox = false;
   }
-// COLOR VARIATION ON TEMP ellipse
-  if (tempvaryrub >0) {
-      fill(255/4, 94/4, 77/4, 140);
+  // COLOR VARIATION ON TEMP ellipse
+  if (tempvaryrub > 0) {
+    fill(255 / 4, 94 / 4, 77 / 4, 140);
   }
-  if (tempvaryrub >1) {
-      fill(255/3, 94/3, 77/3, 152);
+  if (tempvaryrub > 1) {
+    fill(255 / 3, 94 / 3, 77 / 3, 152);
   }
-  if (tempvaryrub >2) {
-      fill(255/2, 94/2, 77/2, 165);
+  if (tempvaryrub > 2) {
+    fill(255 / 2, 94 / 2, 77 / 2, 165);
   }
-  if (tempvaryrub >3) {
-      fill(255/1.5, 94/1.5, 77/1.5, 178);
+  if (tempvaryrub > 3) {
+    fill(255 / 1.5, 94 / 1.5, 77 / 1.5, 178);
   }
-  if (tempvaryrub >4) {
-      fill(255/1.2, 94/1.2, 77/1.2, 191);
+  if (tempvaryrub > 4) {
+    fill(255 / 1.2, 94 / 1.2, 77 / 1.2, 191);
   }
-  if (tempvaryrub >5) {
-      fill(255, 94, 77, 204);
+  if (tempvaryrub > 5) {
+    fill(255, 94, 77, 204);
   }
-  if (tempvaryrub >6) {
-      fill(255, 94, 77, 216);
+  if (tempvaryrub > 6) {
+    fill(255, 94, 77, 216);
   }
-  if (tempvaryrub >7) {
-      fill(255, 94, 77, 229);
+  if (tempvaryrub > 7) {
+    fill(255, 94, 77, 229);
   }
-  if (tempvaryrub >8) {
-      fill(255, 94, 77, 242);
+  if (tempvaryrub > 8) {
+    fill(255, 94, 77, 242);
   }
-  if (tempvaryrub >9) {
-      fill(255, 94, 77, 255);
+  if (tempvaryrub > 9) {
+    fill(255, 94, 77, 255);
   }
-//END OF COLOR VARIATION
+  //END OF COLOR VARIATION
   ellipse(0, 0, diametroellipse, diametroellipse);
 
   if (tempsec == 1 && frameCount % 60 == 0 && timertemp > 0) {
-    timertemp ++;
+    timertemp++;
   }
   if (tempsec == 0 && frameCount % 60 == 0 && timertemp > 0) {
-    timertemp --;
+    timertemp--;
   }
-  if (timertemp>20) {
-    timertemp=20
+  if (timertemp > 20) {
+    timertemp = 20
   }
-  if (timertemp<10) {
-    timertemp=10
+  if (timertemp < 10) {
+    timertemp = 10
   }
 
   image(tempicon, -diametroellipse / 3, -diametroellipse / 3, diametroellipse / 1.5, diametroellipse / 1.5)
 
-//TEXTO TEMPERATURA
+  //TEXTO TEMPERATURA
 
-noStroke();
-fill(255, 255);
-textSize(diametroellipse / 5);
-textStyle(BOLD);
+  noStroke();
+  fill(255, 255);
+  textSize(diametroellipse / 5);
+  textStyle(BOLD);
   text(round(tempcelsius) + ' ˚C', 0, diametroellipse * 0.75);
 
-var tempfarenheit = tempcelsius*1.8+32;
+  var tempfarenheit = tempcelsius * 1.8 + 32;
 
   textStyle(NORMAL);
   fill(255, 127);
-    text(round(tempfarenheit) + ' ˚F', 0, diametroellipse * 0.95);
+  text(round(tempfarenheit) + ' ˚F', 0, diametroellipse * 0.95);
 
   // text(timertemp, 0, 0);
 
   pop();
 
-//FIM TEMPERATURA
+  //FIM TEMPERATURA
 
-//HUMIDITY STARTS
+  //HUMIDITY STARTS
 
   push();
   strokeWeight(diametroellipse / 50);
@@ -587,32 +592,32 @@ var tempfarenheit = tempcelsius*1.8+32;
 
   if (mouseX > windowWidth - diametroellipse * 1.5 && mouseX < windowWidth - diametroellipse / 2 &&
     mouseY > height - 3 * diametroellipse - diametroellipse / 3 && mouseY < height - 3 * diametroellipse + diametroellipse / 1.5) {
-      humimouseover=1;
-    } else {
-        humimouseover=0;
-    }
+    humimouseover = 1;
+  } else {
+    humimouseover = 0;
+  }
 
 
-    if (clicks >4) {
-      clicks = 1;
-    }
-    if (clicks <1) {
-      clicks = 1;
-    }
+  if (clicks > 4) {
+    clicks = 1;
+  }
+  if (clicks < 1) {
+    clicks = 1;
+  }
 
 
-if (clicks==1) {
-  image(humidity1, -diametroellipse/2,-diametroellipse*1.75, diametroellipse, diametroellipse)
-}
-if (clicks==2) {
-  image(humidity2, -diametroellipse/2,-diametroellipse*1.75, diametroellipse, diametroellipse)
-}
-if (clicks==3) {
-  image(humidity3, -diametroellipse/2,-diametroellipse*1.75, diametroellipse, diametroellipse)
-}
-if (clicks==4) {
-  image(humidity4, -diametroellipse/2,-diametroellipse*1.75, diametroellipse, diametroellipse)
-}
+  if (clicks == 1) {
+    image(humidity1, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
+  }
+  if (clicks == 2) {
+    image(humidity2, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
+  }
+  if (clicks == 3) {
+    image(humidity3, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
+  }
+  if (clicks == 4) {
+    image(humidity4, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
+  }
 
   // textStyle(NORMAL);
   // fill(255, 127);
@@ -624,7 +629,7 @@ if (clicks==4) {
 }
 
 function mousePressed() {
-  if (humimouseover==1) {
+  if (humimouseover == 1) {
     clicks++
   }
 
