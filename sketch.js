@@ -640,7 +640,7 @@ function controladores() {
 
   //TEXT WARNINGS
 
-  translate(width/2, height-diametroellipse*3.5)
+  translate(width/2, height-diametroellipse*3.75)
           // stroke(255,255);
           // noFill();
           // rect(0,0,width/3,diametroellipse*1.5);
@@ -663,7 +663,7 @@ function controladores() {
 
         }
           fill(255,opacidadetexto)
-          text(warningupordown, 0, diametroellipse/2, width/2, diametroellipse*1.5); // Text wraps within text box
+          text(warningupordown, 0, diametroellipse/2, width/3, diametroellipse*1.5); // Text wraps within text box
 
 
 
