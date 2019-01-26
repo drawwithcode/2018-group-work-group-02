@@ -1,8 +1,7 @@
 let alturaemfeet = 3;
 let timertemp =10;
 var clicks = 0;
-var humimouseover = 0;
-let alturafeet = alturaemfeet * 100;
+  var humimouseover = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
@@ -63,7 +62,7 @@ function aviaouno() {
 
   // then pivot the grid
   rotate(rotationZ);
-  // text(opacidadeContrail, 0, 0);
+  text(opacidadeContrail, 0, 0);
   push();
   fill(0);
   tint(255, 127);
@@ -77,26 +76,26 @@ function aviaouno() {
 //OPACIDADE DO CONTRAIL
     var opacidadeContrail = 0;
 
-if (alturafeet < 3000) {
+if (alturaemfeet < 30) {
     opacidadeContrail = -1.08*alturaemfeet+32;
 }
 
-if (alturafeet >= 20000) {
+if (alturaemfeet >= 200) {
     opacidadeContrail = 0.25*alturaemfeet-50;
 }
-if (alturafeet >= 30000) {
+if (alturaemfeet >= 300) {
     opacidadeContrail = 25;
 }
 
 
 //PARTICLE control
-if (alturafeet <3000) {
+if (alturaemfeet <30) {
   var wingtipon =1
 } else {
     var wingtipon =0
 }
 
-if (alturafeet >=20000) {
+if (alturaemfeet >=200) {
   var contrailon =1
 } else {
     var contrailon =0
@@ -377,28 +376,13 @@ function controladores() {
   if (alturaemfeet > 400) {
     alturaemfeet=401
   }
+
   if (alturaemfeet < 3) {
     alturaemfeet=2.9
   }
-  if (rotacaoaviaolado > 3) {
-    var grausubida = 1;
-  }
-  if (rotacaoaviaolado < -3) {
-    var grausubida = -1;
-  }
-  if (grausubida > 0) {
-    alturaemfeet++;
-  }
-  if (grausubida < 0) {
-    alturaemfeet--;
-  }
-  if (alturaemfeet > 400) {
-    alturafeet = 40000
-  }
-  if (alturaemfeet < 3) {
-    alturafeet = 300
-  }
 
+  var alturafeet = alturaemfeet * 100;
+    // var alturafeet = 3000;
   stroke(255, 255, 255, 255);
   if (alturafeet > 40000) {
     stroke(255, 94, 77, 255);
@@ -421,6 +405,28 @@ function controladores() {
 
   pop();
 
+  if (rotacaoaviaolado > 3) {
+    var grausubida = 1;
+  }
+
+  if (rotacaoaviaolado < -3) {
+    var grausubida = -1;
+  }
+
+  if (grausubida > 0) {
+    alturaemfeet++;
+  }
+
+  if (grausubida < 0) {
+    alturaemfeet--;
+  }
+
+  if (alturaemfeet > 400) {
+    alturafeet = 40000
+  }
+  if (alturaemfeet < 3) {
+    alturafeet = 300
+  }
 
 
 
