@@ -2,6 +2,7 @@ let alturaemfeet = 3;
 let timertemp =10;
 var clicks = 0;
   var humimouseover = 0;
+    var alturafeet = alturaemfeet * 100;
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
@@ -76,26 +77,26 @@ function aviaouno() {
 //OPACIDADE DO CONTRAIL
     var opacidadeContrail = 0;
 
-if (alturaemfeet < 30) {
+if (alturafeet < 3000) {
     opacidadeContrail = -1.08*alturaemfeet+32;
 }
 
-if (alturaemfeet >= 200) {
+if (alturafeet >= 20000) {
     opacidadeContrail = 0.25*alturaemfeet-50;
 }
-if (alturaemfeet >= 300) {
+if (alturafeet >= 30000) {
     opacidadeContrail = 25;
 }
 
 
 //PARTICLE control
-if (alturaemfeet <30) {
+if (alturafeet <3000) {
   var wingtipon =1
 } else {
     var wingtipon =0
 }
 
-if (alturaemfeet >=200) {
+if (alturafeet >=20000) {
   var contrailon =1
 } else {
     var contrailon =0
@@ -381,7 +382,7 @@ function controladores() {
     alturaemfeet=2.9
   }
 
-  var alturafeet = alturaemfeet * 100;
+
     // var alturafeet = 3000;
   stroke(255, 255, 255, 255);
   if (alturafeet > 40000) {
