@@ -106,10 +106,11 @@ function aviaouno() {
 
   // then pivot the grid
   rotate(rotationZ);
-  // text(opacidadeContrail, 0, 0);
+
   push();
   fill(0);
   tint(255, 127);
+
   image(aviao1, -width / 11.2, -width / 11.2, width / 5.6, width / 5.6);
   pop();
 
@@ -634,6 +635,36 @@ function controladores() {
 
   pop();
   pop();
+
+  // HUMIDITY END
+
+  //TEXT WARNINGS
+
+  translate(width/2, height-diametroellipse*4.5)
+          // stroke(255,255);
+          // noFill();
+          // rect(0,0,width/3,diametroellipse*1.5);
+          noStroke();
+          fill(255,255);
+          rectMode(CENTER);
+          let warningupordown = 'Fly higher for contrail or lower for wingtip contrail';
+        textStyle(BOLD);
+
+        var opacidadetexto = 0;
+
+        if (alturaemfeet >15 && alturaemfeet <300) {
+          opacidadetexto = 255-(opacidadeWingtip*10)
+
+        }
+
+        if (alturaemfeet >15 && alturaemfeet <300) {
+          opacidadetexto = 255-(opacidadeContrail*10)
+          fill(255,opacidadetexto)
+          text(warningupordown, 0, diametroellipse/2, width/2, diametroellipse*1.5); // Text wraps within text box
+
+        }
+
+
 
 }
 
