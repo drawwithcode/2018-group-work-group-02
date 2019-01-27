@@ -1,12 +1,19 @@
 var alturaemfeet = 30;
-let timertemp = 10;
-var clicks = 0;
+let timertemp = 100;
+var humiclicks = 0;
 var humimouseover = 0;
-let opacidadeContrail = 1;
+
 let opacidadeWingtip = 1;
+let opacidadeContrail = 1;
+
+var opacidademulthumi = 0;
+var opacidademulttemp = 0;
+var opacidadeWingtipmultalt = 0;
+var opacidadeWingtipFinal = 0;
+
 let wingtipon = 1;
 let contrailon = 1;
-var mousepressionado =0;
+var mousepressionado = 0;
 
 function setup() {
 
@@ -62,44 +69,63 @@ function relogiofundo() {
   textSize(20);
   textAlign(CENTER);
   textFont("Josefin Sans");
-  // text(segundosdia, width / 2, height / 2 - 30);
-  // text(round(segundosdiaaltura), width / 2, height / 2);
-  // text(windowHeight, width / 2, height / 2 + 30);
+  // text(tempvaryrub, width / 2, height / 2 - 30);
+  // text(opacidademulthumi, width / 2, height / 2);
+  // text(opacidademulttemp, width / 2, height / 2 + 30);
+  // text(opacidadeWingtipmultalt, width / 2, height / 2 + 60);
+
 
 }
 
 function aviaouno() {
 
+  //OPACIDADE controladores
+
+  // ACCORDING TO HUMIDITY
+  if (humiclicks == 4) {
+    opacidademulthumi = 0;
+  }
+  if (humiclicks == 3) {
+    opacidademulthumi = 0.25;
+  }
+  if (humiclicks == 2) {
+    opacidademulthumi = 0.5;
+  }
+  if (humiclicks == 1) {
+    opacidademulthumi = 1;
+  }
+  // ACCORDING TO TEMP IS opacidademulttemp
+
+  if (timertemp >= 100) {
+    opacidademulttemp = 2 + (-timertemp / 100);
+  }
+
+  // ACCORDING TO ALTITUDE
+
+
   if (alturaemfeet < 300) {
-    opacidadeWingtip = -1.08 * 0.1*alturaemfeet + 32;
+    opacidadeWingtipmultalt = (-1.08 * 0.1 * alturaemfeet + 32) / 25;
   }
-
   if (alturaemfeet > 300) {
-    opacidadeWingtip=0;
+    opacidadeWingtipmultalt = 0;
   }
-
   if (alturaemfeet < 2000) {
-    opacidadeContrail=0;
+    opacidadeContrail = 0;
   }
-
   if (alturaemfeet > 2000) {
-    opacidadeContrail = 0.25 * 0.1*alturaemfeet - 50;
+    opacidadeContrail = 0.25 * 0.1 * alturaemfeet - 50;
   }
   if (alturaemfeet > 3000) {
     opacidadeContrail = 25;
   }
 
-  // if (alturaemfeet < 30) {
-  //   wingtipon = 1
-  // } else {
-  //   wingtipon = 0
-  // }
-  //
-  // if (alturaemfeet > 200) {
-  //   contrailon = 1
-  // } else {
-  //   contrailon = 0
-  // }
+  // OPACIDADE FINAL
+
+  if (1 == 1) {
+    opacidadeWingtipFinal = 25 * opacidademulthumi * opacidademulttemp * opacidadeWingtipmultalt;
+  }
+
+
 
   fill(192);
   push();
@@ -265,7 +291,7 @@ Particle3.prototype.update = function() {
 Particle3.prototype.display = function() {
   stroke(600, this.lifespan);
   strokeWeight(0);
-  fill(255, opacidadeWingtip);
+  fill(255, opacidadeWingtipFinal);
   ellipse(-width / 11.2, this.position.y - height / 90, width / 270, width / 60);
 };
 
@@ -322,7 +348,7 @@ Particle4.prototype.update = function() {
 Particle4.prototype.display = function() {
   stroke(600, this.lifespan);
   strokeWeight(0);
-  fill(255, opacidadeWingtip);
+  fill(255, opacidadeWingtipFinal);
   ellipse(+width / 11.2, this.position.y - height / 90, width / 270, width / 60);
 };
 
@@ -412,24 +438,24 @@ function controladores() {
   translate(0, 0);
 
 
-//BUTTONS FOR UP OR DOWN
+  //BUTTONS FOR UP OR DOWN
 
-image(iconplus,diametroellipse/2-diametroellipse/4,diametroellipse/4,diametroellipse/4,diametroellipse/4)
+  image(iconplus, diametroellipse / 2 - diametroellipse / 4, diametroellipse / 4, diametroellipse / 4, diametroellipse / 4)
 
-image(iconminus,-diametroellipse/2,diametroellipse/4,diametroellipse/4,diametroellipse/4)
+  image(iconminus, -diametroellipse / 2, diametroellipse / 4, diametroellipse / 4, diametroellipse / 4)
 
-if (mouseX > diametroellipse+diametroellipse/2.75-diametroellipse/8 && mouseX < diametroellipse+diametroellipse/2.75+diametroellipse/8 &&
-  mouseY > height - 1.6 * diametroellipse+diametroellipse/2.75-diametroellipse/8 && mouseY < height - 1.6 * diametroellipse+diametroellipse/2.75+diametroellipse/8 && mouseIsPressed) {
-    rotationX ++;
+  if (mouseX > diametroellipse + diametroellipse / 2.75 - diametroellipse / 8 && mouseX < diametroellipse + diametroellipse / 2.75 + diametroellipse / 8 &&
+    mouseY > height - 1.6 * diametroellipse + diametroellipse / 2.75 - diametroellipse / 8 && mouseY < height - 1.6 * diametroellipse + diametroellipse / 2.75 + diametroellipse / 8 && mouseIsPressed) {
+    rotationX++;
   }
 
-  if (mouseX > diametroellipse-diametroellipse/2.75-diametroellipse/8 && mouseX < diametroellipse-diametroellipse/2.75+diametroellipse/8 &&
-    mouseY > height - 1.6 * diametroellipse+diametroellipse/2.75-diametroellipse/8 && mouseY < height - 1.6 * diametroellipse+diametroellipse/2.75+diametroellipse/8 && mouseIsPressed) {
-      rotationX --;
-    }
+  if (mouseX > diametroellipse - diametroellipse / 2.75 - diametroellipse / 8 && mouseX < diametroellipse - diametroellipse / 2.75 + diametroellipse / 8 &&
+    mouseY > height - 1.6 * diametroellipse + diametroellipse / 2.75 - diametroellipse / 8 && mouseY < height - 1.6 * diametroellipse + diametroellipse / 2.75 + diametroellipse / 8 && mouseIsPressed) {
+    rotationX--;
+  }
 
 
-// END OF UP DOWN BUTTONS
+  // END OF UP DOWN BUTTONS
 
   rotate(-1 * rotacaoaviaolado);
   if (alturafeet > 40000 || alturafeet < 300) {
@@ -465,18 +491,18 @@ if (mouseX > diametroellipse+diametroellipse/2.75-diametroellipse/8 && mouseX < 
     grausubida = -3;
   }
 
-//CONTROL OF ASCENT
+  //CONTROL OF ASCENT
 
   if (grausubida > 0) {
-  (alturaemfeet++);
+    (alturaemfeet++);
   }
 
   if (grausubida > 1.5) {
-  (alturaemfeet++)+(alturaemfeet++);
+    (alturaemfeet++) + (alturaemfeet++);
   }
 
   if (grausubida > 2.5) {
-  (alturaemfeet++)+(alturaemfeet++)+(alturaemfeet++)+(alturaemfeet++);
+    (alturaemfeet++) + (alturaemfeet++) + (alturaemfeet++) + (alturaemfeet++);
   }
 
   if (grausubida < 0) {
@@ -484,11 +510,11 @@ if (mouseX > diametroellipse+diametroellipse/2.75-diametroellipse/8 && mouseX < 
   }
 
   if (grausubida < -1.5) {
-  (alturaemfeet--)+(alturaemfeet--);
+    (alturaemfeet--) + (alturaemfeet--);
   }
 
   if (grausubida < -2.5) {
-  (alturaemfeet--)+(alturaemfeet--)+(alturaemfeet--)+(alturaemfeet--);
+    (alturaemfeet--) + (alturaemfeet--) + (alturaemfeet--) + (alturaemfeet--);
   }
 
   if (alturaemfeet > 4000) {
@@ -538,7 +564,7 @@ if (mouseX > diametroellipse+diametroellipse/2.75-diametroellipse/8 && mouseX < 
   push();
   strokeWeight(diametroellipse / 50);
 
-push();
+  push();
   translate(width - diametroellipse, height - 1.6 * diametroellipse);
 
   push();
@@ -553,18 +579,23 @@ push();
 
   var tempsec = 0;
   var tempinitial = 10 + (-1 * alturafeet / 610.76);
-  var tempcelsius = tempinitial + (timertemp - 10);
+  var tempcelsius = tempinitial + (timertemp / 10 - 10);
   var templimit = 0;
   var tempvaryrub = tempcelsius - tempinitial;
+
+  // text(tempvaryrub,10,10)
 
   if (tempcelsius > (tempinitial + 9)) {
     templimit = 1
   }
 
   // Test if the cursor is over the box
+
+  fill(0, 0, 0, 127);
+  ellipse(0, 0, diametroellipse, diametroellipse);
+
   if (mouseX > windowWidth - diametroellipse * 1.5 && mouseX < windowWidth - diametroellipse / 2 &&
     mouseY > height - 1.6 * diametroellipse - diametroellipse / 2 && mouseY < height - 1.6 * diametroellipse + diametroellipse / 2 && mouseIsPressed) {
-    // overBox = true;
     if (!locked) {
       fill(255 / 5, 94 / 5, 77 / 5, 100);
       tempsec = 1;
@@ -575,50 +606,24 @@ push();
     // overBox = false;
   }
   // COLOR VARIATION ON TEMP ellipse
-  if (tempvaryrub > 0) {
-    fill(255 / 2, 94 / 2, 77 / 2, 165);
-  }
-  if (tempvaryrub > 1) {
-    fill(255 / 2, 94 / 2, 77 / 2, 175);
-  }
-  if (tempvaryrub > 2) {
-    fill(255 / 2, 94 / 2, 77 / 2, 185);
-  }
-  if (tempvaryrub > 3) {
-    fill(255 / 1.5, 94 / 1.5, 77 / 1.5, 195);
-  }
-  if (tempvaryrub > 4) {
-    fill(255 / 1.2, 94 / 1.2, 77 / 1.2, 205);
-  }
-  if (tempvaryrub > 5) {
-    fill(255, 94, 77, 215);
-  }
-  if (tempvaryrub > 6) {
-    fill(255, 94, 77, 225);
-  }
-  if (tempvaryrub > 7) {
-    fill(255, 94, 77, 235);
-  }
-  if (tempvaryrub > 8) {
-    fill(255, 94, 77, 245);
-  }
-  if (tempvaryrub > 9) {
-    fill(255, 94, 77, 255);
-  }
-  //END OF COLOR VARIATION
+
+  var opacidadecircletemp = tempvaryrub / 9.99 * 255;
+  fill(255, 94, 77, opacidadecircletemp);
   ellipse(0, 0, diametroellipse, diametroellipse);
 
-  if (tempsec == 1 && frameCount % 45 == 0 && timertemp > 0) {
+  //END OF COLOR VARIATION
+
+  if (tempsec == 1 && frameCount % 3 == 0 && timertemp > 0) {
     timertemp++;
   }
-  if (tempsec == 0 && frameCount % 45 == 0 && timertemp > 0) {
+  if (tempsec == 0 && frameCount % 3 == 0 && timertemp > 0) {
     timertemp--;
   }
-  if (timertemp > 20) {
-    timertemp = 20
+  if (timertemp > 200) {
+    timertemp = 200
   }
-  if (timertemp < 10) {
-    timertemp = 10
+  if (timertemp < 100) {
+    timertemp = 100
   }
 
 
@@ -634,51 +639,53 @@ push();
 
   textStyle(NORMAL);
   fill(255, 127);
+
   text(round(tempfarenheit) + ' ˚F', 0, diametroellipse * 0.95);
-pop();
+  pop();
   // text(timertemp, 0, 0);
 
   pop();
 
   var tempicontransp = 255
-    // if (mouseX > windowWidth - diametroellipse * 1.5 && mouseX < windowWidth - diametroellipse / 2 &&
-    //   mouseY > height - 1.6 * diametroellipse - diametroellipse / 2 && mouseY < height - 1.6 * diametroellipse + diametroellipse / 2 && mouseIsPressed) {
-    //   tempicontransp = 200;
-    // }
+  // if (mouseX > windowWidth - diametroellipse * 1.5 && mouseX < windowWidth - diametroellipse / 2 &&
+  //   mouseY > height - 1.6 * diametroellipse - diametroellipse / 2 && mouseY < height - 1.6 * diametroellipse + diametroellipse / 2 && mouseIsPressed) {
+  //   tempicontransp = 200;
+  // }
 
-var tempiconx = mouseX-diametroellipse/3;
-var tempicony = mouseY-diametroellipse/3;
+  var tempiconx = mouseX - diametroellipse / 3;
+  var tempicony = mouseY - diametroellipse / 3;
 
-if (tempiconx > width-diametroellipse*1.17) {
-  tempiconx = width-diametroellipse*1.17;
-}
-if (tempiconx < width-diametroellipse*1.5) {
-  tempiconx = width-diametroellipse*1.5;
-}
-if (tempicony > height-diametroellipse*1.76) {
-  tempicony = height-diametroellipse*1.76;
-}
-if (tempicony < height-diametroellipse*2.1) {
-  tempicony = height-diametroellipse*2.1;
-}
+  if (tempiconx > width - diametroellipse * 1.17) {
+    tempiconx = width - diametroellipse * 1.17;
+  }
+  if (tempiconx < width - diametroellipse * 1.5) {
+    tempiconx = width - diametroellipse * 1.5;
+  }
+  if (tempicony > height - diametroellipse * 1.76) {
+    tempicony = height - diametroellipse * 1.76;
+  }
+  if (tempicony < height - diametroellipse * 2.1) {
+    tempicony = height - diametroellipse * 2.1;
+  }
 
-if (tempsec==0) {
-  tempiconx =  width - diametroellipse-diametroellipse/3;
-  tempicony =   height - 1.6 * diametroellipse*1.2;
+  if (tempsec == 0) {
+    tempiconx = width - diametroellipse - diametroellipse / 3;
+    tempicony = height - 1.6 * diametroellipse * 1.2;
 
 
-}
+  }
 
-  tint(255,tempicontransp)
-    image(tempicon, tempiconx, tempicony, diametroellipse / 1.5, diametroellipse / 1.5)
+  tint(255, tempicontransp)
+  image(tempicon, tempiconx, tempicony, diametroellipse / 1.5, diametroellipse / 1.5)
 
   //FIM TEMPERATURA
 
   //HUMIDITY STARTS
-pop();
-translate(width - diametroellipse, height - 1.6 * diametroellipse);
+  pop();
 
   push();
+  translate(width - diametroellipse, height - 1.6 * diametroellipse);
+
   strokeWeight(diametroellipse / 50);
   // translate(width - diametroellipse/2, height - 3 * diametroellipse);
 
@@ -696,41 +703,41 @@ translate(width - diametroellipse, height - 1.6 * diametroellipse);
   }
 
 
-  if (clicks > 4) {
-    clicks = 1;
+  if (humiclicks > 4) {
+    humiclicks = 1;
   }
-  if (clicks < 1) {
-    clicks = 1;
+  if (humiclicks < 1) {
+    humiclicks = 1;
   }
 
-var humitransp = 255;
+  var humitransp = 255;
 
-if (mouseX > windowWidth - diametroellipse * 1.5 && mouseX < windowWidth - diametroellipse / 2 &&
-  mouseY > height - 3 * diametroellipse - diametroellipse / 3 && mouseY < height - 3 * diametroellipse + diametroellipse / 1.5 && mouseIsPressed) {
-  humitransp = 200;
-}
+  if (mouseX > windowWidth - diametroellipse * 1.5 && mouseX < windowWidth - diametroellipse / 2 &&
+    mouseY > height - 3 * diametroellipse - diametroellipse / 3 && mouseY < height - 3 * diametroellipse + diametroellipse / 1.5 && mouseIsPressed) {
+    humitransp = 200;
+  }
 
 
-  if (clicks == 1) {
-    tint(255,humitransp)
+  if (humiclicks == 1) {
+    tint(255, humitransp)
     image(humidity1, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
   }
-  if (clicks == 2) {
-      tint(255,humitransp)
-      image(humidity2, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
+  if (humiclicks == 2) {
+    tint(255, humitransp)
+    image(humidity2, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
   }
-  if (clicks == 3) {
-      tint(255,humitransp)
-      image(humidity3, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
+  if (humiclicks == 3) {
+    tint(255, humitransp)
+    image(humidity3, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
   }
-  if (clicks == 4) {
-    tint(255,humitransp)
-      image(humidity4, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
+  if (humiclicks == 4) {
+    tint(255, humitransp)
+    image(humidity4, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
   }
 
   // textStyle(NORMAL);
   // fill(255, 127);
-  //   text(clicks, 0, 0);
+  //   text(humiclicks, 0, 0);
 
   pop();
   pop();
@@ -738,49 +745,78 @@ if (mouseX > windowWidth - diametroellipse * 1.5 && mouseX < windowWidth - diame
   // HUMIDITY END
 
   //TEXT WARNINGS
+
+  push();
+  translate(width / 2, height / 1.6)
   textSize(diametroellipse / 5);
-  translate(width/2, height/1.5)
-          // stroke(255,255);
-          // noFill();
-          // rect(0,0,width/3,diametroellipse*1.5);
-          noStroke();
-          fill(255,255);
-          rectMode(CENTER);
-          let warningupordown = 'Increase altitude for contrail or lower for wingtip contrail.';
+
+  noStroke();
+  fill(255, 255);
+  rectMode(CENTER);
+  let warningupordown = 'Increase altitude for contrail or lower for wingtip contrail.';
 
 
-        var opacidadetexto = 0;
-        var widthtextbox = width/3;
+  var opacidadetexto = 0;
+  var widthtextbox = width / 3;
 
-        if (diametroellipse<81) {
-          widthtextbox = width/2;
-        }
-
-
-        if (alturaemfeet >200 && alturaemfeet <3000) {
-          opacidadetexto = 255-(opacidadeContrail*50)
-
-        }
-        if (alturaemfeet <3000) {
-          opacidadetexto = 255-(opacidadeWingtip*30)
-
-        }
-          fill(255,opacidadetexto)
-          textStyle(BOLD);
-
-          text('Whooops! No contrails', 0,-diametroellipse/2);
-          textStyle(NORMAL);
-          fill(255,0.5*opacidadetexto)
-          text(warningupordown, 0, diametroellipse/2, widthtextbox, diametroellipse*1.5); // Text wraps within text box
+  if (diametroellipse < 81) {
+    widthtextbox = width / 2;
+  }
 
 
+  if (alturaemfeet > 2000 && alturaemfeet < 3000) {
+    opacidadetexto = 255 - (opacidadeContrail * 20)
 
+  }
+  if (alturaemfeet < 300) {
+    opacidadetexto = 255 * (-2 * opacidadeWingtipmultalt + 1);
+
+  }
+  if (alturaemfeet > 300 && alturaemfeet < 2000) {
+    opacidadetexto = 255;
+  }
+  fill(255, opacidadetexto)
+  textStyle(BOLD);
+  text('Whooops! No contrails', 0, -diametroellipse / 2);
+  // text(opacidadeContrail, 0,-diametroellipse/2);
+  textStyle(NORMAL);
+  fill(255, 0.5 * opacidadetexto)
+  text(warningupordown, 0, diametroellipse / 2, widthtextbox, diametroellipse * 1.5);
+  // Text wraps within text box
+
+  if (opacidademulthumi == 0) {
+    if (alturaemfeet <= 200) {
+      textStyle(BOLD);
+      fill(255, 255)
+      text('Low humidity, no contrails.', 0, -diametroellipse / 2);
+      textStyle(NORMAL);
+      fill(255, 127)
+      let becausenowater = 'This happens because there is no water to condense.';
+      text(becausenowater, 0, diametroellipse / 2, widthtextbox, diametroellipse * 1.5);
+    }
+  }
+
+
+  if (opacidademulttemp < 0.5) {
+    if (alturaemfeet <= 2000) {
+      textStyle(BOLD);
+      fill(255, 94, 77, 255 * (1 - 2 * opacidademulttemp))
+      text('Too hot!', 0, +diametroellipse + 2);
+      textStyle(NORMAL);
+      fill(255, 255 * (1 - 2 * opacidademulttemp))
+      let toohot = 'Contrails get thinner or dissapear when temperatures are high.';
+      text(toohot, 0, diametroellipse * 2, widthtextbox, diametroellipse * 1.5);
+    }
+  }
+
+
+  pop();
 
 }
 
 function mousePressed() {
   if (humimouseover == 1) {
-    clicks++
+    humiclicks++
     mousepressionado = 1;
   }
 
