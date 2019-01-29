@@ -950,8 +950,8 @@ if (textsec == 1 && frameCount % 2 == 0 && timertext >= 0) {
 if (textsec == 0 && frameCount % 2 == 0 && timertext > 0) {
   timertext--;
 }
-if (timertext > 100) {
-  timertext = 100
+if (timertext > 50) {
+  timertext = 50
 }
 if (timertext < 0) {
   timertext = 0
@@ -988,14 +988,14 @@ if (textClicks < 1) {
 }
 
 if (rotationY >0) {
-    var opacidadeTextoUp1 = 255*timertext/100*(1-rotationY/40);
+    var opacidadeTextoUp1 = 255*timertext/50*(1-rotationY/40);
   }else {
-    opacidadeTextoUp1 = 255*timertext/100*(1+rotationY/40);
+    opacidadeTextoUp1 = 255*timertext/50*(1+rotationY/40);
   }
 
-var opacidadeTextoUp2 = 255*timertext/100;
-var opacidadeTextoUp3 = 255*timertext/100;
-var opacidadeTextoUp4 = 255*timertext/100;
+var opacidadeTextoUp2 = opacidadeTextoUp1;
+var opacidadeTextoUp3 = opacidadeTextoUp1;
+var opacidadeTextoUp4 = opacidadeTextoUp1;
 
   //TEXT 1 - TITLE
 
