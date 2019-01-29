@@ -864,7 +864,7 @@ function controladores() {
   // TEXTS INFO UP
   pop();
 
-  var positionxTextoUp = width/2-rotationY*9;
+  var positionxTextoUp = width/2-rotationY;
   var positionyTextoUp = height/3.5-width/10;
 
 
@@ -959,11 +959,11 @@ if (timertext < 0) {
 
 //TESTING TEXTS
 
-fill(255,255)
-text(textClicks, width/2,height/2 );
-text(triangleRightOver+'right', width/2,height/2 +30);
-text(textsec, width/2,height/2+60 );
-text(timertext, width/2,height/2+90 );
+// fill(255,255)
+// text(textClicks, width/2,height/2 );
+// text(triangleRightOver+'right', width/2,height/2 +30);
+// text(textsec, width/2,height/2+60 );
+// text(timertext, width/2,height/2+90 );
 
 //ROTATION Y AND TEXTCLICKS
 
