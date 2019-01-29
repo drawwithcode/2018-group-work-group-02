@@ -986,12 +986,12 @@ if (textClicks > 4) {
 if (textClicks < 1) {
   textClicks = 1;
 }
-if (rotation >0) {
-  var opacidadeTextoUp1 = 255*timertext/100*(1-rotationY/40);
-}else {
-  opacidadeTextoUp1 = 255*timertext/100*(1+rotationY/40);
-}
 
+if (rotationY >0) {
+    var opacidadeTextoUp1 = 255*timertext/100*(1-rotationY/40);
+  }else {
+    opacidadeTextoUp1 = 255*timertext/100*(1+rotationY/40);
+  }
 
 var opacidadeTextoUp2 = 255*timertext/100;
 var opacidadeTextoUp3 = 255*timertext/100;
