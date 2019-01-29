@@ -5,11 +5,11 @@ let timertext = 0;
 var humiclicks = 0;
 var humimouseover = 0;
 
-var triangleRightOver =0;
-var triangleLeftOver =0;
+var triangleRightOver = 0;
+var triangleLeftOver = 0;
 var textCounter = 0;
 var textClicks = 0;
-var textsec =1;
+var textsec = 1;
 
 var diametroellipse = 0;
 
@@ -29,7 +29,6 @@ var mousepressionado = 0;
 
 function setup() {
 
-
   createCanvas(windowWidth, windowHeight)
   angleMode(DEGREES)
   imgfundo = loadImage("assets/bg.png");
@@ -43,6 +42,13 @@ function setup() {
   humidity4 = loadImage("assets/humidity4.svg");
   iconplus = loadImage("assets/plus.svg");
   iconminus = loadImage("assets/minus.svg");
+
+  tap = loadImage("assets/tap.svg");
+  tilt1 = loadImage("assets/tilt1.svg");
+  tilt2 = loadImage("assets/tilt2.svg");
+  rotatenoventa = loadImage("assets/rotatenoventa.svg");
+  rotatenoventa2 = loadImage("assets/rotatenoventa2.svg");
+
 
   system = new ParticleSystem(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
   system2 = new ParticleSystem2(createVector(+width / 20 - width / 50, -height / 20 + height / 10));
@@ -75,8 +81,22 @@ function relogiofundo() {
   var posicaoybg = -1 * segundosdiaaltura;
 
   //IMAGEM DE FUNDO CAMBIANTE
-  image(imgfundo, 0, posicaoybg, width, height * 10);
+  push();
 
+
+if (frameCount<500) {
+var opacidadefundo = 25;
+}
+if (frameCount>=500) {
+  opacidadefundo = 25+(frameCount-500)
+}
+if (frameCount>1000) {
+  opacidadefundo = 255
+}
+
+  tint(255,opacidadefundo)
+  image(imgfundo, 0, posicaoybg, width, height * 10);
+pop();
   //TEXTO PARA TESTE
   textSize(20);
   textAlign(CENTER);
@@ -124,7 +144,7 @@ function aviaouno() {
     opacidadeContrailMultalt = 0;
   }
   if (alturaemfeet > 2000) {
-    opacidadeContrailMultalt = (0.25 * 0.1 * alturaemfeet - 50)/25;
+    opacidadeContrailMultalt = (0.25 * 0.1 * alturaemfeet - 50) / 25;
   }
   if (alturaemfeet > 3000) {
     opacidadeContrailMultalt = 1;
@@ -132,14 +152,15 @@ function aviaouno() {
 
   // OPACIDADE FINAL
 
+
   if (1 == 1) {
     opacidadeWingtipFinal = 25 * opacidademulthumi * opacidademulttemp * opacidadeWingtipmultalt;
   }
 
 
-    if (1 == 1) {
-      opacidadeContrailFinal = 25 * opacidademulthumi * opacidademulttemp * opacidadeContrailMultalt;
-    }
+  if (1 == 1) {
+    opacidadeContrailFinal = 25 * opacidademulthumi * opacidademulttemp * opacidadeContrailMultalt;
+  }
 
   fill(192);
   push();
@@ -169,7 +190,7 @@ var Particle = function(position) {
   this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
   this.position = position.copy();
-  this.lifespan = 450*opacidademulttemp;
+  this.lifespan = 450 * opacidademulttemp;
 };
 
 Particle.prototype.run = function() {
@@ -190,7 +211,7 @@ Particle.prototype.display = function() {
   strokeWeight(0);
   fill(255, opacidadeContrailFinal);
   // fill(255, this.lifespan);
-  ellipse(width / 38, ((this.position.y*2)-diametroellipse/2.4), width / 180, width / 60);
+  ellipse(width / 38, ((this.position.y * 2) - diametroellipse / 2.4), width / 180, width / 60);
 };
 
 // Is the particle still useful?
@@ -229,7 +250,7 @@ var Particle2 = function(position) {
   this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
   this.position = position.copy();
-  this.lifespan = 450*opacidademulttemp;
+  this.lifespan = 450 * opacidademulttemp;
 };
 
 Particle2.prototype.run = function() {
@@ -251,7 +272,7 @@ Particle2.prototype.display = function() {
   // fill(255, 25);
   fill(255, opacidadeContrailFinal);
 
-  ellipse(-width / 38, ((this.position.y*2)-diametroellipse/2.4), width / 180, width / 60);
+  ellipse(-width / 38, ((this.position.y * 2) - diametroellipse / 2.4), width / 180, width / 60);
 };
 
 // Is the particle still useful?
@@ -288,7 +309,7 @@ var Particle3 = function(position) {
   this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
   this.position = position.copy();
-  this.lifespan = 300*opacidademulttemp;
+  this.lifespan = 300 * opacidademulttemp;
 };
 
 Particle3.prototype.run = function() {
@@ -346,7 +367,7 @@ var Particle4 = function(position) {
   this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
   this.position = position.copy();
-  this.lifespan = 300*opacidademulttemp;
+  this.lifespan = 300 * opacidademulttemp;
 };
 
 Particle4.prototype.run = function() {
@@ -403,13 +424,13 @@ function controladores() {
   push();
 
   if (windowWidth > windowHeight) {
-     diametroellipse = height / 7;
+    diametroellipse = height / 7;
   } else {
-     diametroellipse = width / 7;
+    diametroellipse = width / 7;
   }
 
   if (diametroellipse < 80) {
-     diametroellipse = 80;
+    diametroellipse = 80;
   } else {
 
   }
@@ -470,9 +491,37 @@ function controladores() {
     rotationX--;
   }
 
+  // INFO 2 ALTITUDE
+  var info2opacity = 255;
+  if (frameCount < 100) {
+    info2opacity = (frameCount) * 4;
 
-  // END OF UP DOWN BUTTONS
+  } else {
+    info2opacity = 255;
+  }
+  if (frameCount > 600) {
+    info2opacity = 255 - 4 * (frameCount - 600);
+  }
+  push();
+  noStroke();
+  translate(0, -diametroellipse/2 - diametroellipse / 8)
+  textSize(diametroellipse / 6);
+  textStyle(BOLD);
+  fill(255, 221, 13, info2opacity);
+  tint(255, info2opacity);
+  textAlign(CENTER);
+  rotate(0);
+  text('Tilt device to', 0, -diametroellipse - diametroellipse / 12 - diametroellipse / 2.5);
+  text('control altitude or', 0, -diametroellipse - diametroellipse / 12 - diametroellipse / 5);
+  text('use +/– buttons', 0, -diametroellipse - diametroellipse / 12);
+  fill(255, 221, 13, info2opacity);
+  image(tilt2, -diametroellipse / 2, -diametroellipse, diametroellipse, diametroellipse)
+  translate(0,-diametroellipse/2)
+  rotate(-10 * (sin(frameCount / 0.2)));
+  image(tilt1, -diametroellipse / 2, -diametroellipse/2, diametroellipse, diametroellipse)
+  pop();
 
+  // AVIAO LADO
   rotate(-1 * rotacaoaviaolado);
   if (alturafeet > 40000 || alturafeet < 300) {
     image(aviaoladover, -diametroellipse / 2 + diametroellipse * 0.2, -diametroellipse / 8, diametroellipse * 0.6, diametroellipse * 0.258);
@@ -629,7 +678,7 @@ function controladores() {
 
   //END OF COLOR VARIATION
 
-//TIMER
+  //TIMER
 
   if (tempsec == 1 && frameCount % 3 == 0 && timertemp > 0) {
     timertemp++;
@@ -696,8 +745,6 @@ function controladores() {
   tint(255, tempicontransp)
   image(tempicon, tempiconx, tempicony, diametroellipse / 1.5, diametroellipse / 1.5)
 
-  //FIM TEMPERATURA
-
   //HUMIDITY STARTS
   pop();
 
@@ -753,10 +800,41 @@ function controladores() {
     image(humidity4, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
   }
 
-  // textStyle(NORMAL);
-  // fill(255, 127);
-  //   text(humiclicks, 0, 0);
+  // HOW TO USE - HUMIDITY AND TEMP
 
+  var info1opacity = 255;
+  var info1halfway = 0;
+
+  if (frameCount < 200) {
+    info1opacity = (frameCount - 100) * 4;
+
+  } else {
+    info1opacity = 255;
+  }
+
+  if (frameCount > 600) {
+    info1opacity = 255 - 4 * (frameCount - 600);
+
+  }
+
+  push();
+  translate(0, -2 * diametroellipse + diametroellipse / 8)
+  // rect(0,0,100,10)
+  textStyle(BOLD);
+  fill(255, 221, 13, info1opacity);
+  tint(255, info1opacity);
+
+  textAlign(CENTER);
+  textSize(diametroellipse / 6);
+
+  // text(frameCount, 0, -diametroellipse-diametroellipse/12-diametroellipse/2.5);
+  text('Tap to change', 0, -diametroellipse - diametroellipse / 12 - diametroellipse / 2.5);
+  text('humidity or', 0, -diametroellipse - diametroellipse / 12 - diametroellipse / 5);
+  text('temperature', 0, -diametroellipse - diametroellipse / 12);
+  image(tilt2, -diametroellipse / 2, -diametroellipse, diametroellipse, diametroellipse)
+  // rotate(5 * (sin(frameCount / 0.2)));
+  image(tap, -diametroellipse / 2, -diametroellipse-(-0.06*diametroellipse*(sin(frameCount / 0.2))), diametroellipse, diametroellipse)
+  pop();
   pop();
   pop();
 
@@ -790,7 +868,7 @@ function controladores() {
     opacidadetextoAlt = 255 * (-2 * opacidadeWingtipmultalt + 1);
 
   }
-  if (alturaemfeet >= 350 && alturaemfeet <= 1950 && alturaemfeet <=2500) {
+  if (alturaemfeet >= 350 && alturaemfeet <= 1950 && alturaemfeet <= 2500) {
     opacidadetextoAlt = 255;
   }
   if (alturaemfeet >= 2500) {
@@ -820,7 +898,7 @@ function controladores() {
   // }
 
   if (opacidademulthumi == 0) {
-    if (alturaemfeet<= 200 ) {
+    if (alturaemfeet <= 200) {
       textStyle(BOLD);
       fill(255, 255)
       text('Low humidity, no contrails.', 0, -diametroellipse / 2);
@@ -829,7 +907,7 @@ function controladores() {
       let becausenowater = 'This happens because there is no water to condense.';
       text(becausenowater, 0, diametroellipse / 2, widthtextbox, diametroellipse * 1.5);
     }
-    if (alturaemfeet >= 2000 ) {
+    if (alturaemfeet >= 2000) {
       textStyle(BOLD);
       fill(255, 255)
       text('Low humidity, no contrails.', 0, -diametroellipse / 2);
@@ -846,16 +924,16 @@ function controladores() {
       fill(255, 94, 77, 255 * (1 - 2 * opacidademulttemp))
       text('Too hot!', 0, +diametroellipse + 2);
       textStyle(NORMAL);
-      fill(255, 255 * 0.5*(1 - 2 * opacidademulttemp))
+      fill(255, 255 * 0.5 * (1 - 2 * opacidademulttemp))
       let toohot = 'Wingtip contrails get shorter or disappear on higher temperatures.';
       text(toohot, 0, diametroellipse * 2, widthtextbox, diametroellipse * 1.5);
     }
-    if (alturaemfeet >=2500) {
+    if (alturaemfeet >= 2500) {
       textStyle(BOLD);
       fill(255, 94, 77, 255 * (1 - 2 * opacidademulttemp))
       text('Too hot!', 0, +diametroellipse + 2);
       textStyle(NORMAL);
-      fill(255, 255 * 0.5*(1 - 2 * opacidademulttemp))
+      fill(255, 255 * 0.5 * (1 - 2 * opacidademulttemp))
       let toohot = 'Contrails get shorter or disappear on higher temperatures.';
       text(toohot, 0, diametroellipse * 2, widthtextbox, diametroellipse * 1.5);
     }
@@ -863,192 +941,243 @@ function controladores() {
 
   // TEXTS INFO UP
   pop();
-if (rotationY<0) {
-  var positionxTextoUp = width/2-rotationY*rotationY/8;
+  if (rotationY < 0) {
+    var positionxTextoUp = width / 2 - rotationY * rotationY / 8;
 
-}else {
-  positionxTextoUp= width/2+rotationY*rotationY/8;
-}
-  var positionyTextoUp = height/3.5-width/10;
-
-//TRIANGULOS
-var tgsize = diametroellipse/5;
-
-
-//TRIANGULO RIGHT
-push();
-//test mouse lightPosition
-if (mouseX > width-diametroellipse-tgsize/1.5 && mouseX < width-diametroellipse+tgsize/3 &&
-  mouseY > positionyTextoUp-tgsize && mouseY < positionyTextoUp+tgsize) {
-  triangleRightOver =1;
-} else {
-  triangleRightOver=0;
-}
-// last stage stop
-if (textClicks==4) {
-  fill(255,0);
-
-}else {
-  fill(255,127)
-}// rect(width-diametroellipse-tgsize/1.5, positionyTextoUp-tgsize, 100, 10)
-if (triangleRightOver==1 || rotationY < -15 ) {
-  translate(width-diametroellipse-(diametroellipse*0.1*(sin(frameCount/0.2))),positionyTextoUp)
-}else {
-  translate(width-diametroellipse,positionyTextoUp)
-}noStroke();
-triangle(tgsize/1.5,0,-tgsize/1.5,-tgsize,-tgsize/1.5,tgsize)
-pop();
-
-//TRIANGULO 2
-push();
-
-//test mouse lightPosition
-if (mouseX > diametroellipse-tgsize/1.5 && mouseX < diametroellipse+tgsize/3 &&
-  mouseY > positionyTextoUp-tgsize && mouseY < positionyTextoUp+tgsize) {
-  triangleLeftOver =1;
-} else {
-  triangleLeftOver=0;
-}
-// last stage stop
-if (textClicks==1) {
-  fill(255,0)
-}else {
-  fill(255,127)
-}
-
-if (triangleLeftOver==1 || rotationY < -15 ) {
-  if (textClicks>1) {
-    translate(diametroellipse-(diametroellipse*-0.1*(sin(frameCount/0.2))),positionyTextoUp)
+  } else {
+    positionxTextoUp = width / 2 + rotationY * rotationY / 8;
   }
-}else {
-  translate(diametroellipse,positionyTextoUp)
+  var positionyTextoUp = height / 3.5 - width / 10;
+
+  //TRIANGULOS
+  var tgsize = diametroellipse / 5;
+
+// INFO 3 - triangle
+
+var info3opacity = 255;
+
+if (frameCount < 300) {
+  info3opacity = (frameCount - 150) * 4;
+
+} else {
+  info3opacity = 255;
 }
 
+if (frameCount > 600) {
+  info3opacity = 255 - 4 * (frameCount - 600);
+
+}
+
+push();
 noStroke();
-
-triangle(-tgsize/1.5,0,tgsize/1.5,-tgsize,tgsize/1.5,tgsize)
+translate(width/2, diametroellipse*2-diametroellipse/2)
+textSize(diametroellipse / 6);
+textStyle(BOLD);
+fill(255, 221, 13, info3opacity);
+tint(255, info3opacity);
+textAlign(LEFT);
+rotate(0);
+text('Rotate or use arrows', diametroellipse/2, - diametroellipse / 12 - diametroellipse / 2.5);
+text('to see more info', diametroellipse/2, - diametroellipse / 12 - diametroellipse / 5);
+// text('use +/– buttons', 0, -diametroellipse - diametroellipse / 12);
+fill(255, 221, 13, info3opacity);
+image(tilt2, -diametroellipse / 2, -diametroellipse, diametroellipse, diametroellipse)
+translate(0,-diametroellipse/2)
+rotate(-10 * (sin(frameCount / 0.2)));
+image(rotatenoventa, -diametroellipse / 2, -diametroellipse/2, diametroellipse, diametroellipse)
 pop();
 
-//TIMER
 
-//TEXT SEC LIGA NO 1
-
-if (triangleRightOver) {
-  if (mouseIsPressed) {
-    timertext=0;
+  //TRIANGULO RIGHT
+  push();
+  //test mouse lightPosition
+  if (mouseX > width - diametroellipse - tgsize / 1.5 && mouseX < width - diametroellipse + tgsize / 3 &&
+    mouseY > positionyTextoUp - tgsize && mouseY < positionyTextoUp + tgsize) {
+    triangleRightOver = 1;
+  } else {
+    triangleRightOver = 0;
   }
-}
-if (triangleLeftOver) {
-  if (mouseIsPressed) {
-    timertext=0;
+  // last stage stop
+  if (textClicks == 4) {
+    fill(255, 0);
+
+  } else {
+    fill(255, 127)
+  } // rect(width-diametroellipse-tgsize/1.5, positionyTextoUp-tgsize, 100, 10)
+  if (triangleRightOver == 1 || rotationY < -15) {
+    translate(width - diametroellipse - (diametroellipse * 0.1 * (sin(frameCount / 0.2))), positionyTextoUp)
+  } else {
+    translate(width - diametroellipse, positionyTextoUp)
   }
-}
+  noStroke();
+  triangle(tgsize / 1.5, 0, -tgsize / 1.5, -tgsize, -tgsize / 1.5, tgsize)
+  pop();
 
-if (textsec == 1 && frameCount % 2 == 0 && timertext >= 0) {
-  timertext++;
-}
-if (textsec == 0 && frameCount % 2 == 0 && timertext > 0) {
-  timertext--;
-}
-if (timertext > 50) {
-  timertext = 50
-}
-if (timertext < 0) {
-  timertext = 0
-}
+  //TRIANGULO 2
+  push();
 
-
-//TESTING TEXTS
-
-// fill(255,255)
-// text(rotationY, width/2,height/2 );
-// text(textClicks, width/2,height/2 +30);
-// text(textsec, width/2,height/2+60 );
-// text(timertext, width/2,height/2+90 );
-
-//ROTATION Y AND TEXTCLICKS
-
-if (rotationY > 30) {
-  if (frameCount % 15 == 0) {
-    textClicks --
-  };
-}
-
-if (rotationY < -30) {
-  if (frameCount % 15 == 0) {
-    textClicks ++
-  };
-}
-
-if (textClicks > 4) {
-  textClicks = 1;
-}
-if (textClicks < 1) {
-  textClicks = 1;
-}
-
-if (rotationY >0) {
-    var opacidadeTextoUp1 = 255*timertext/50*(1-rotationY/40);
-  }else {
-    opacidadeTextoUp1 = 255*timertext/50*(1+rotationY/40);
+  //test mouse lightPosition
+  if (mouseX > diametroellipse - tgsize / 1.5 && mouseX < diametroellipse + tgsize / 3 &&
+    mouseY > positionyTextoUp - tgsize && mouseY < positionyTextoUp + tgsize) {
+    triangleLeftOver = 1;
+  } else {
+    triangleLeftOver = 0;
+  }
+  // last stage stop
+  if (textClicks == 1) {
+    fill(255, 0)
+  } else {
+    fill(255, 127)
   }
 
-var opacidadeTextoUp2 = opacidadeTextoUp1;
-var opacidadeTextoUp3 = opacidadeTextoUp1;
-var opacidadeTextoUp4 = opacidadeTextoUp1;
+  if (triangleLeftOver == 1 || rotationY < -15) {
+    if (textClicks > 1) {
+      translate(diametroellipse - (diametroellipse * -0.1 * (sin(frameCount / 0.2))), positionyTextoUp)
+    }
+  } else {
+    translate(diametroellipse, positionyTextoUp)
+  }
+
+  noStroke();
+
+  triangle(-tgsize / 1.5, 0, tgsize / 1.5, -tgsize, tgsize / 1.5, tgsize)
+  pop();
+
+  //TIMER
+
+  //TEXT SEC LIGA NO 1
+
+  if (triangleRightOver) {
+    if (mouseIsPressed) {
+      timertext = 0;
+    }
+  }
+  if (triangleLeftOver) {
+    if (mouseIsPressed) {
+      timertext = 0;
+    }
+  }
+
+  if (textsec == 1 && frameCount % 2 == 0 && timertext >= 0) {
+    timertext++;
+  }
+  if (textsec == 0 && frameCount % 2 == 0 && timertext > 0) {
+    timertext--;
+  }
+  if (timertext > 50) {
+    timertext = 50
+  }
+  if (timertext < 0) {
+    timertext = 0
+  }
+
+
+  //TESTING TEXTS
+
+  // fill(255,255)
+  // text(rotationY, width/2,height/2 );
+  // text(textClicks, width/2,height/2 +30);
+  // text(textsec, width/2,height/2+60 );
+  // text(timertext, width/2,height/2+90 );
+
+  //ROTATION Y AND TEXTCLICKS
+
+  if (rotationY > 30) {
+    if (frameCount % 15 == 0) {
+      textClicks--
+    };
+  }
+
+  if (rotationY < -30) {
+    if (frameCount % 15 == 0) {
+      textClicks++
+    };
+  }
+
+  if (textClicks > 4) {
+    textClicks = 1;
+  }
+  if (textClicks < 1) {
+    textClicks = 1;
+  }
+
+  if (rotationY > 0) {
+    var opacidadeTextoUp1 = 255 * timertext / 50 * (1 - rotationY / 40);
+  } else {
+    opacidadeTextoUp1 = 255 * timertext / 50 * (1 + rotationY / 40);
+  }
+
+  var opacidadeTextoUp2 = opacidadeTextoUp1;
+  var opacidadeTextoUp3 = opacidadeTextoUp1;
+  var opacidadeTextoUp4 = opacidadeTextoUp1;
 
   //TEXT 1 - TITLE
 
-if (textClicks == 1) {
-  textStyle(BOLD);
-  fill(255,opacidadeTextoUp1)
-  textSize(diametroellipse/1.5)
-  text('contrail', positionxTextoUp,positionyTextoUp )
-  textStyle(NORMAL);
-  fill(255,opacidadeTextoUp1*0.5)
-  textSize(diametroellipse/5)
-  text('why, when and where they appear', positionxTextoUp,positionyTextoUp+diametroellipse/2.5 );
-}
+  if (textClicks == 1) {
+    textStyle(BOLD);
+    fill(255, opacidadeTextoUp1)
+    textSize(diametroellipse / 1.5)
+    text('contrails', positionxTextoUp, positionyTextoUp)
+    textStyle(NORMAL);
+    fill(255, opacidadeTextoUp1 * 0.5)
+    textSize(diametroellipse / 5)
+    text('what, why and when they appear', positionxTextoUp, positionyTextoUp + diametroellipse / 2.5);
+  }
 
-//TEXT 2 -
+  //TEXT 2 -
 
-if (textClicks == 2) {
-  textStyle(BOLD);
-  fill(255,opacidadeTextoUp2)
-  textSize(diametroellipse/1.5)
-  text('texto2', positionxTextoUp,positionyTextoUp )
-  textStyle(NORMAL);
-  fill(255,opacidadeTextoUp2*0.5)
-  textSize(diametroellipse/5)
-  text(opacidadeTextoUp2, positionxTextoUp,positionyTextoUp+diametroellipse/2.5 );
-}
+  if (textClicks == 2) {
 
-//TEXT 3 -
+    textStyle(BOLD);
+    textSize(diametroellipse / 5)
+    fill(255, opacidadeTextoUp2)
 
-if (textClicks == 3) {
-  textStyle(BOLD);
-  fill(255,opacidadeTextoUp3)
-  textSize(diametroellipse/1.5)
-  text('texto3', positionxTextoUp,positionyTextoUp )
-  textStyle(NORMAL);
-  fill(255,opacidadeTextoUp3*0.5)
-  textSize(diametroellipse/5)
-  text('texto3', positionxTextoUp,positionyTextoUp+diametroellipse/2.5 );
-}
-//TEXT 4 -
+    text('what:', positionxTextoUp, positionyTextoUp - diametroellipse / 2);
+    textStyle(NORMAL);
+    fill(255, opacidadeTextoUp2 * 0.5)
 
-if (textClicks == 4) {
-  textStyle(BOLD);
-  fill(255,opacidadeTextoUp4)
-  textSize(diametroellipse/1.5)
-  text('texto4', positionxTextoUp,positionyTextoUp )
-  textStyle(NORMAL);
-  fill(255,opacidadeTextoUp4*0.5)
-  textSize(diametroellipse/5)
-  text('texto4', positionxTextoUp,positionyTextoUp+diametroellipse/2.5 );
-  triangleRightOver=0;
+    let text2 = 'Contrail is a short name for the "Condensation Trails" left by planes.';
+    push();
+    translate(-positionxTextoUp / 2, 0)
+    text(text2, positionxTextoUp, positionyTextoUp - diametroellipse / 4, width / 2, diametroellipse);
+    pop();
 
-}
+  }
+
+  //TEXT 3 -
+
+  if (textClicks == 3) {
+    textStyle(BOLD);
+    textSize(diametroellipse / 5)
+    fill(255, opacidadeTextoUp3)
+
+    text('why:', positionxTextoUp, positionyTextoUp - diametroellipse / 2);
+    textStyle(NORMAL);
+    fill(255, opacidadeTextoUp3 * 0.5)
+
+    let text3 = 'Water vapor from the engine or from pressure changes, combined with low temperatures, form linear clouds.';
+    push();
+    translate(-positionxTextoUp / 2, 0)
+    text(text3, positionxTextoUp, positionyTextoUp - diametroellipse / 3, width / 2, diametroellipse);
+    pop();
+  }
+  //TEXT 4 -
+
+  if (textClicks == 4) {
+    textStyle(BOLD);
+    textSize(diametroellipse / 5)
+    fill(255, opacidadeTextoUp4)
+
+    text('when:', positionxTextoUp, positionyTextoUp - diametroellipse / 2);
+    textStyle(NORMAL);
+    fill(255, opacidadeTextoUp4 * 0.5)
+
+    let text4 = 'Regular contrails come from cruising planes. Close to the ground, they happen due to wing pressure changes.';
+    push();
+    translate(-positionxTextoUp / 2, 0)
+    text(text4, positionxTextoUp, positionyTextoUp - diametroellipse / 3, width / 2, diametroellipse);
+    pop();
+  }
 
   push();
 
@@ -1061,11 +1190,11 @@ function mousePressed() {
   }
   if (triangleRightOver == 1) {
     textClicks++;
-      textsec =1;
+    textsec = 1;
   }
   if (triangleLeftOver == 1) {
     textClicks--;
-    textsec =1;
+    textsec = 1;
 
   }
 
