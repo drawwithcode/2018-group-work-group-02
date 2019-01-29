@@ -651,7 +651,7 @@ function controladores() {
   fill(255, 255);
   textSize(diametroellipse / 5);
   textStyle(BOLD);
-  // text(round(tempcelsius) + ' ˚C', 0, diametroellipse * 0.75);
+  text(round(tempcelsius) + ' ˚C', 0, diametroellipse * 0.75);
 
   var tempfarenheit = tempcelsius * 1.8 + 32;
 
@@ -968,13 +968,13 @@ if (timertext < 0) {
 
 //ROTATION Y AND TEXTCLICKS
 
-if (rotationY > 40) {
+if (rotationY > 30) {
   if (frameCount % 15 == 0) {
     textClicks --
   };
 }
 
-if (rotationY < -40) {
+if (rotationY < -30) {
   if (frameCount % 15 == 0) {
     textClicks ++
   };
@@ -986,8 +986,13 @@ if (textClicks > 4) {
 if (textClicks < 1) {
   textClicks = 1;
 }
+if (rotation >0) {
+  var opacidadeTextoUp1 = 255*timertext/100*(1-rotationY/40);
+}else {
+  opacidadeTextoUp1 = 255*timertext/100*(1+rotationY/40);
+}
 
-var opacidadeTextoUp1 = 255*timertext/100*(1-rotationY/40);
+
 var opacidadeTextoUp2 = 255*timertext/100;
 var opacidadeTextoUp3 = 255*timertext/100;
 var opacidadeTextoUp4 = 255*timertext/100;
