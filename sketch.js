@@ -863,8 +863,12 @@ function controladores() {
 
   // TEXTS INFO UP
   pop();
-
+if (rotationY<0) {
   var positionxTextoUp = width/2-rotationY*rotationY/8;
+
+}else {
+  positionxTextoUp= width/2+rotationY*rotationY/8;
+}
   var positionyTextoUp = height/3.5-width/10;
 
 //TRIANGULOS
