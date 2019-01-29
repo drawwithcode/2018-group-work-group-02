@@ -856,14 +856,16 @@ function controladores() {
 
   pop();
 
+
+
 if (1==1) {
-  var rotationY = 60;
+  var rotationY = 0;
 }
 
 fill(255,255)
 text(textCounter, width/2,height/2 )
 
-if (rotationY > 70) {
+if (rotationY > 82) {
   textCounter ++;
 }
 
@@ -876,20 +878,41 @@ if (textCounter < 1) {
 
 var positionxTextoUp = width/2-rotationY*9;
 var positionyTextoUp = height/3.5-width/10;
-var opacidadeTextoUp = 255-rotationY*2.83;
+var opacidadeTextoUp1 = 255-rotationY*2.83;
+var opacidadeTextoUp2 = 255-opacidadeTextoUp1;
 
-  textStyle(BOLD);
-  fill(255,opacidadeTextoUp)
+//TRIANGULOS
+var tgsize = diametroellipse/5;
 
+//TRIANGULO 1
+push();
+translate(width-diametroellipse,positionyTextoUp)
+noStroke();
+triangle(tgsize/1.5,0,-tgsize/1.5,-tgsize,-tgsize/1.5,tgsize)
+pop();
+
+//TRIANGULO 2
+push();
+translate(diametroellipse,positionyTextoUp)
+noStroke();
+
+if (textCounter==1) {
+  fill(255,255/5)
+}
+
+triangle(-tgsize/1.5,0,tgsize/1.5,-tgsize,tgsize/1.5,tgsize)
+pop();
 
 
   //TEXT 1 - TITLE
 
 if (textCounter == 1) {
+  textStyle(BOLD);
+  fill(255,opacidadeTextoUp1)
   textSize(diametroellipse/1.5)
   text('contrail', positionxTextoUp,positionyTextoUp )
   textStyle(NORMAL);
-  fill(255,opacidadeTextoUp*0.5)
+  fill(255,opacidadeTextoUp1*0.5)
   textSize(diametroellipse/5)
   text('why, when and where they appear', positionxTextoUp,positionyTextoUp+diametroellipse/2.5 );
 }
@@ -897,8 +920,14 @@ if (textCounter == 1) {
 //TEXT 2 -
 
 if (textCounter == 2) {
-  tint(255, humitransp)
-  image(humidity2, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
+  textStyle(BOLD);
+  fill(255,opacidadeTextoUp2)
+  textSize(diametroellipse/1.5)
+  text('texto 2', width/2,positionyTextoUp )
+  textStyle(NORMAL);
+  fill(255,opacidadeTextoUp2*0.5)
+  textSize(diametroellipse/5)
+  text('subtitulo do texto 2', width/2,positionyTextoUp+diametroellipse/2.5 );
 }
 
 //TEXT 3 -
