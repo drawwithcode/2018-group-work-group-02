@@ -84,11 +84,11 @@ function relogiofundo() {
   push();
 
 
-if (frameCount<600) {
+if (frameCount<400) {
 var opacidadefundo = 25;
 }
-if (frameCount>=600) {
-  opacidadefundo = 25+(frameCount-600)
+if (frameCount>=400) {
+  opacidadefundo = 25+(frameCount-400)
 }
 if (frameCount>1000) {
   opacidadefundo = 255
@@ -499,8 +499,8 @@ function controladores() {
   } else {
     info2opacity = 255;
   }
-  if (frameCount > 600) {
-    info2opacity = 255 - 4 * (frameCount - 600);
+  if (frameCount > 400) {
+    info2opacity = 255 - 4 * (frameCount - 400);
   }
   push();
   noStroke();
@@ -812,8 +812,8 @@ function controladores() {
     info1opacity = 255;
   }
 
-  if (frameCount > 600) {
-    info1opacity = 255 - 4 * (frameCount - 600);
+  if (frameCount > 450) {
+    info1opacity = 255 - 4 * (frameCount - 450);
 
   }
 
@@ -963,14 +963,14 @@ if (frameCount < 300) {
   info3opacity = 255;
 }
 
-if (frameCount > 600) {
-  info3opacity = 255 - 4 * (frameCount - 600);
+if (frameCount > 500) {
+  info3opacity = 255 - 4 * (frameCount - 500);
 
 }
 
 push();
 noStroke();
-translate(width/2, diametroellipse*2-diametroellipse/2)
+translate(width/2, diametroellipse*2-diametroellipse/1.25)
 textSize(diametroellipse / 6);
 textStyle(BOLD);
 fill(255, 221, 13, info3opacity);
