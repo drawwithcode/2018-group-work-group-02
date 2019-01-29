@@ -864,7 +864,7 @@ function controladores() {
   // TEXTS INFO UP
   pop();
 
-  var positionxTextoUp = width/2-rotationY;
+  var positionxTextoUp = width/2-rotationY*rotationY;
   var positionyTextoUp = height/3.5-width/10;
 
 //TRIANGULOS
@@ -956,9 +956,9 @@ if (timertext < 0) {
 
 //TESTING TEXTS
 
-fill(255,255)
-text(rotationY, width/2,height/2 );
-text(textClicks, width/2,height/2 +30);
+// fill(255,255)
+// text(rotationY, width/2,height/2 );
+// text(textClicks, width/2,height/2 +30);
 // text(textsec, width/2,height/2+60 );
 // text(timertext, width/2,height/2+90 );
 
@@ -1007,11 +1007,11 @@ if (textClicks == 2) {
   textStyle(BOLD);
   fill(255,opacidadeTextoUp2)
   textSize(diametroellipse/1.5)
-  text('texto2', width/2,positionyTextoUp )
+  text('texto2', positionxTextoUp,positionyTextoUp )
   textStyle(NORMAL);
   fill(255,opacidadeTextoUp2*0.5)
   textSize(diametroellipse/5)
-  text(opacidadeTextoUp2, width/2,positionyTextoUp+diametroellipse/2.5 );
+  text(opacidadeTextoUp2, positionxTextoUp,positionyTextoUp+diametroellipse/2.5 );
 }
 
 //TEXT 3 -
@@ -1020,11 +1020,11 @@ if (textClicks == 3) {
   textStyle(BOLD);
   fill(255,opacidadeTextoUp3)
   textSize(diametroellipse/1.5)
-  text('texto3', width/2,positionyTextoUp )
+  text('texto3', positionxTextoUp,positionyTextoUp )
   textStyle(NORMAL);
   fill(255,opacidadeTextoUp3*0.5)
   textSize(diametroellipse/5)
-  text('texto3', width/2,positionyTextoUp+diametroellipse/2.5 );
+  text('texto3', positionxTextoUp,positionyTextoUp+diametroellipse/2.5 );
 }
 //TEXT 4 -
 
@@ -1032,11 +1032,11 @@ if (textClicks == 4) {
   textStyle(BOLD);
   fill(255,opacidadeTextoUp4)
   textSize(diametroellipse/1.5)
-  text('texto4', width/2,positionyTextoUp )
+  text('texto4', positionxTextoUp,positionyTextoUp )
   textStyle(NORMAL);
   fill(255,opacidadeTextoUp4*0.5)
   textSize(diametroellipse/5)
-  text('texto4', width/2,positionyTextoUp+diametroellipse/2.5 );
+  text('texto4', positionxTextoUp,positionyTextoUp+diametroellipse/2.5 );
   triangleRightOver=0;
 
 }
