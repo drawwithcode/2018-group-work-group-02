@@ -983,7 +983,7 @@ if (textClicks < 1) {
   textClicks = 1;
 }
 
-var opacidadeTextoUp1 = 255*timertext/100;
+var opacidadeTextoUp1 = 255*timertext/100*(1-rotationY/40);
 var opacidadeTextoUp2 = 255*timertext/100;
 var opacidadeTextoUp3 = 255*timertext/100;
 var opacidadeTextoUp4 = 255*timertext/100;
