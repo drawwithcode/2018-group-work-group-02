@@ -2,7 +2,9 @@ var alturaemfeet = 30;
 let timertemp = 100;
 var humiclicks = 0;
 var humimouseover = 0;
+var textCounter = 0;
 
+var diametroellipse = 0;
 let opacidadeWingtip = 1;
 let opacidadeContrail = 1;
 
@@ -10,6 +12,8 @@ var opacidademulthumi = 0;
 var opacidademulttemp = 0;
 var opacidadeWingtipmultalt = 0;
 var opacidadeWingtipFinal = 0;
+var opacidadeContrailMultalt = 0;
+var opacidadeContrailFinal = 0;
 
 let wingtipon = 1;
 let contrailon = 1;
@@ -74,7 +78,6 @@ function relogiofundo() {
   // text(opacidademulttemp, width / 2, height / 2 + 30);
   // text(opacidadeWingtipmultalt, width / 2, height / 2 + 60);
 
-
 }
 
 function aviaouno() {
@@ -110,13 +113,13 @@ function aviaouno() {
     opacidadeWingtipmultalt = 0;
   }
   if (alturaemfeet < 2000) {
-    opacidadeContrail = 0;
+    opacidadeContrailMultalt = 0;
   }
   if (alturaemfeet > 2000) {
-    opacidadeContrail = 0.25 * 0.1 * alturaemfeet - 50;
+    opacidadeContrailMultalt = (0.25 * 0.1 * alturaemfeet - 50)/25;
   }
   if (alturaemfeet > 3000) {
-    opacidadeContrail = 25;
+    opacidadeContrailMultalt = 1;
   }
 
   // OPACIDADE FINAL
@@ -126,6 +129,9 @@ function aviaouno() {
   }
 
 
+    if (1 == 1) {
+      opacidadeContrailFinal = 25 * opacidademulthumi * opacidademulttemp * opacidadeContrailMultalt;
+    }
 
   fill(192);
   push();
@@ -155,7 +161,7 @@ var Particle = function(position) {
   this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
   this.position = position.copy();
-  this.lifespan = 650;
+  this.lifespan = 450*opacidademulttemp;
 };
 
 Particle.prototype.run = function() {
@@ -174,9 +180,9 @@ Particle.prototype.update = function() {
 Particle.prototype.display = function() {
   stroke(600, this.lifespan);
   strokeWeight(0);
-  fill(255, opacidadeContrail);
+  fill(255, opacidadeContrailFinal);
   // fill(255, this.lifespan);
-  ellipse(width / 38, this.position.y, width / 180, width / 60);
+  ellipse(width / 38, ((this.position.y*2)-diametroellipse/2.4), width / 180, width / 60);
 };
 
 // Is the particle still useful?
@@ -215,7 +221,7 @@ var Particle2 = function(position) {
   this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
   this.position = position.copy();
-  this.lifespan = 650;
+  this.lifespan = 450*opacidademulttemp;
 };
 
 Particle2.prototype.run = function() {
@@ -234,8 +240,10 @@ Particle2.prototype.update = function() {
 Particle2.prototype.display = function() {
   stroke(600, this.lifespan);
   strokeWeight(0);
-  fill(255, opacidadeContrail);
-  ellipse(-width / 38, this.position.y, width / 180, width / 60);
+  // fill(255, 25);
+  fill(255, opacidadeContrailFinal);
+
+  ellipse(-width / 38, ((this.position.y*2)-diametroellipse/2.4), width / 180, width / 60);
 };
 
 // Is the particle still useful?
@@ -272,7 +280,7 @@ var Particle3 = function(position) {
   this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
   this.position = position.copy();
-  this.lifespan = 300;
+  this.lifespan = 300*opacidademulttemp;
 };
 
 Particle3.prototype.run = function() {
@@ -330,7 +338,7 @@ var Particle4 = function(position) {
   this.acceleration = createVector(0, 0.02);
   this.velocity = createVector(random(-0.05, -0.05), random(-0.7, 0.05));
   this.position = position.copy();
-  this.lifespan = 300;
+  this.lifespan = 300*opacidademulttemp;
 };
 
 Particle4.prototype.run = function() {
@@ -387,13 +395,13 @@ function controladores() {
   push();
 
   if (windowWidth > windowHeight) {
-    var diametroellipse = height / 7;
+     diametroellipse = height / 7;
   } else {
-    var diametroellipse = width / 7;
+     diametroellipse = width / 7;
   }
 
   if (diametroellipse < 80) {
-    var diametroellipse = 80;
+     diametroellipse = 80;
   } else {
 
   }
@@ -756,7 +764,7 @@ function controladores() {
   let warningupordown = 'Increase altitude for contrail or lower for wingtip contrail.';
 
 
-  var opacidadetexto = 0;
+  var opacidadetextoAlt = 0;
   var widthtextbox = width / 3;
 
   if (diametroellipse < 81) {
@@ -764,28 +772,54 @@ function controladores() {
   }
 
 
-  if (alturaemfeet > 2000 && alturaemfeet < 3000) {
-    opacidadetexto = 255 - (opacidadeContrail * 20)
+  if (alturaemfeet > 1950 && alturaemfeet < 3000) {
+    opacidadetextoAlt = 255 - (opacidadeContrailFinal * 20)
 
   }
-  if (alturaemfeet < 300) {
-    opacidadetexto = 255 * (-2 * opacidadeWingtipmultalt + 1);
+  if (alturaemfeet < 350) {
+    opacidadetextoAlt = 255 * (-2 * opacidadeWingtipmultalt + 1);
 
   }
-  if (alturaemfeet > 300 && alturaemfeet < 2000) {
-    opacidadetexto = 255;
+  if (alturaemfeet >= 350 && alturaemfeet <= 1950 && alturaemfeet <=2500) {
+    opacidadetextoAlt = 255;
   }
-  fill(255, opacidadetexto)
+  if (alturaemfeet >= 2500) {
+    opacidadetextoAlt = 0;
+  }
+
+
+  fill(255, opacidadetextoAlt)
   textStyle(BOLD);
   text('Whooops! No contrails', 0, -diametroellipse / 2);
   // text(opacidadeContrail, 0,-diametroellipse/2);
   textStyle(NORMAL);
-  fill(255, 0.5 * opacidadetexto)
+  fill(255, 0.5 * opacidadetextoAlt)
   text(warningupordown, 0, diametroellipse / 2, widthtextbox, diametroellipse * 1.5);
   // Text wraps within text box
+  //
+  // if (opacidademulthumi == 0) {
+  //   if (alturaemfeet <= 200) {
+  //     textStyle(BOLD);
+  //     fill(255, 255)
+  //     text('Low humidity, no contrails.', 0, -diametroellipse / 2);
+  //     textStyle(NORMAL);
+  //     fill(255, 127)
+  //     let becausenowater = 'This happens because there is no water to condense.';
+  //     text(becausenowater, 0, diametroellipse / 2, widthtextbox, diametroellipse * 1.5);
+  //   }
+  // }
 
   if (opacidademulthumi == 0) {
-    if (alturaemfeet <= 200) {
+    if (alturaemfeet<= 200 ) {
+      textStyle(BOLD);
+      fill(255, 255)
+      text('Low humidity, no contrails.', 0, -diametroellipse / 2);
+      textStyle(NORMAL);
+      fill(255, 127)
+      let becausenowater = 'This happens because there is no water to condense.';
+      text(becausenowater, 0, diametroellipse / 2, widthtextbox, diametroellipse * 1.5);
+    }
+    if (alturaemfeet >= 200 ) {
       textStyle(BOLD);
       fill(255, 255)
       text('Low humidity, no contrails.', 0, -diametroellipse / 2);
@@ -796,21 +830,101 @@ function controladores() {
     }
   }
 
-
   if (opacidademulttemp < 0.5) {
-    if (alturaemfeet <= 2000) {
+    if (alturaemfeet <= 200) {
       textStyle(BOLD);
       fill(255, 94, 77, 255 * (1 - 2 * opacidademulttemp))
       text('Too hot!', 0, +diametroellipse + 2);
       textStyle(NORMAL);
       fill(255, 255 * (1 - 2 * opacidademulttemp))
-      let toohot = 'Contrails get thinner or dissapear when temperatures are high.';
+      let toohot = 'Wingtip contrails get shorter or dissapear when temperatures are high.';
+      text(toohot, 0, diametroellipse * 2, widthtextbox, diametroellipse * 1.5);
+    }
+    if (alturaemfeet >=2500) {
+      textStyle(BOLD);
+      fill(255, 94, 77, 255 * (1 - 2 * opacidademulttemp))
+      text('Too hot!', 0, +diametroellipse + 2);
+      textStyle(NORMAL);
+      fill(255, 255 * (1 - 2 * opacidademulttemp))
+      let toohot = 'Contrails get shorter or dissapear when temperatures are high.';
       text(toohot, 0, diametroellipse * 2, widthtextbox, diametroellipse * 1.5);
     }
   }
 
+  // TEXTS INFO UP
+
 
   pop();
+
+if (1==1) {
+  var rotationY = 60;
+}
+
+fill(255,255)
+text(textCounter, width/2,height/2 )
+
+if (rotationY > 70) {
+  textCounter ++;
+}
+
+if (textCounter > 4) {
+  textCounter = 1;
+}
+if (textCounter < 1) {
+  textCounter = 1;
+}
+
+var positionxTextoUp = width/2-rotationY*9;
+var positionyTextoUp = height/3.5-width/10;
+var opacidadeTextoUp = 255-rotationY*2.83;
+
+  textStyle(BOLD);
+  fill(255,opacidadeTextoUp)
+
+
+
+  //TEXT 1 - TITLE
+
+if (textCounter == 1) {
+  textSize(diametroellipse/1.5)
+  text('contrail', positionxTextoUp,positionyTextoUp )
+  textStyle(NORMAL);
+  fill(255,opacidadeTextoUp*0.5)
+  textSize(diametroellipse/5)
+  text('why, when and where they appear', positionxTextoUp,positionyTextoUp+diametroellipse/2.5 );
+}
+
+//TEXT 2 -
+
+if (textCounter == 2) {
+  tint(255, humitransp)
+  image(humidity2, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
+}
+
+//TEXT 3 -
+
+if (textCounter == 3) {
+  tint(255, humitransp)
+  image(humidity3, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
+}
+
+//TEXT 4 -
+
+if (textCounter == 4) {
+  tint(255, humitransp)
+  image(humidity4, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
+}
+
+
+
+
+
+
+
+
+
+
+  push();
 
 }
 
