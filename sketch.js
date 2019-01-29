@@ -968,7 +968,7 @@ if (rotationY > 40) {
   textClicks ++;
 }
 
-if (rotationY > 40) {
+if (rotationY < -40) {
   textClicks --;
 }
 
