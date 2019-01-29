@@ -867,9 +867,6 @@ function controladores() {
   var positionxTextoUp = width/2-rotationY;
   var positionyTextoUp = height/3.5-width/10;
 
-
-
-
 //TRIANGULOS
 var tgsize = diametroellipse/5;
 
@@ -959,9 +956,9 @@ if (timertext < 0) {
 
 //TESTING TEXTS
 
-// fill(255,255)
-// text(textClicks, width/2,height/2 );
-// text(triangleRightOver+'right', width/2,height/2 +30);
+fill(255,255)
+text(rotationY, width/2,height/2 );
+text(textClicks, width/2,height/2 +30);
 // text(textsec, width/2,height/2+60 );
 // text(timertext, width/2,height/2+90 );
 
