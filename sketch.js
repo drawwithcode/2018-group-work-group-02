@@ -829,7 +829,7 @@ function controladores() {
       let becausenowater = 'This happens because there is no water to condense.';
       text(becausenowater, 0, diametroellipse / 2, widthtextbox, diametroellipse * 1.5);
     }
-    if (alturaemfeet >= 200 ) {
+    if (alturaemfeet >= 2000 ) {
       textStyle(BOLD);
       fill(255, 255)
       text('Low humidity, no contrails.', 0, -diametroellipse / 2);
@@ -846,8 +846,8 @@ function controladores() {
       fill(255, 94, 77, 255 * (1 - 2 * opacidademulttemp))
       text('Too hot!', 0, +diametroellipse + 2);
       textStyle(NORMAL);
-      fill(255, 255 * (1 - 2 * opacidademulttemp))
-      let toohot = 'Wingtip contrails get shorter or dissapear when temperatures are high.';
+      fill(255, 255 * 0.5*(1 - 2 * opacidademulttemp))
+      let toohot = 'Wingtip contrails get shorter or disappear on higher temperatures.';
       text(toohot, 0, diametroellipse * 2, widthtextbox, diametroellipse * 1.5);
     }
     if (alturaemfeet >=2500) {
@@ -855,8 +855,8 @@ function controladores() {
       fill(255, 94, 77, 255 * (1 - 2 * opacidademulttemp))
       text('Too hot!', 0, +diametroellipse + 2);
       textStyle(NORMAL);
-      fill(255, 255 * (1 - 2 * opacidademulttemp))
-      let toohot = 'Contrails get shorter or dissapear when temperatures are high.';
+      fill(255, 255 * 0.5*(1 - 2 * opacidademulttemp))
+      let toohot = 'Contrails get shorter or disappear on higher temperatures.';
       text(toohot, 0, diametroellipse * 2, widthtextbox, diametroellipse * 1.5);
     }
   }
@@ -1057,12 +1057,11 @@ if (textClicks == 4) {
 function mousePressed() {
   if (humimouseover == 1) {
     humiclicks++;
-    // mousepressionado = 1;
+    mousepressionado = 1;
   }
   if (triangleRightOver == 1) {
     textClicks++;
       textsec =1;
-    // mousepressionado = 1;
   }
   if (triangleLeftOver == 1) {
     textClicks--;
