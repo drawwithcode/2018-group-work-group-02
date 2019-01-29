@@ -84,11 +84,11 @@ function relogiofundo() {
   push();
 
 
-if (frameCount<500) {
+if (frameCount<600) {
 var opacidadefundo = 25;
 }
-if (frameCount>=500) {
-  opacidadefundo = 25+(frameCount-500)
+if (frameCount>=600) {
+  opacidadefundo = 25+(frameCount-600)
 }
 if (frameCount>1000) {
   opacidadefundo = 255
