@@ -1,10 +1,18 @@
 var alturaemfeet = 30;
 let timertemp = 100;
+let timertext = 0;
+
 var humiclicks = 0;
 var humimouseover = 0;
+
+var triangleRightOver =0;
+var triangleLeftOver =0;
 var textCounter = 0;
+var textClicks = 0;
+var textsec =1;
 
 var diametroellipse = 0;
+
 let opacidadeWingtip = 1;
 let opacidadeContrail = 1;
 
@@ -621,6 +629,8 @@ function controladores() {
 
   //END OF COLOR VARIATION
 
+//TIMER
+
   if (tempsec == 1 && frameCount % 3 == 0 && timertemp > 0) {
     timertemp++;
   }
@@ -641,7 +651,7 @@ function controladores() {
   fill(255, 255);
   textSize(diametroellipse / 5);
   textStyle(BOLD);
-  text(round(tempcelsius) + ' ˚C', 0, diametroellipse * 0.75);
+  // text(round(tempcelsius) + ' ˚C', 0, diametroellipse * 0.75);
 
   var tempfarenheit = tempcelsius * 1.8 + 32;
 
@@ -852,61 +862,134 @@ function controladores() {
   }
 
   // TEXTS INFO UP
-
-
   pop();
 
+  var positionxTextoUp = width/2-rotationY*9;
+  var positionyTextoUp = height/3.5-width/10;
 
 
-// if (1==1) {
-//   var rotationY = 0;
-// }
 
-fill(255,255)
-text(rotationY, width/2,height/2 )
-
-if (rotationY > 82) {
-  textCounter ++;
-}
-
-if (textCounter > 4) {
-  textCounter = 1;
-}
-if (textCounter < 1) {
-  textCounter = 1;
-}
-
-var positionxTextoUp = width/2-rotationY*9;
-var positionyTextoUp = height/3.5-width/10;
-var opacidadeTextoUp1 = 255-rotationY*2.83;
-var opacidadeTextoUp2 = 255-opacidadeTextoUp1;
 
 //TRIANGULOS
 var tgsize = diametroellipse/5;
 
-//TRIANGULO 1
+
+//TRIANGULO RIGHT
 push();
-translate(width-diametroellipse,positionyTextoUp)
-noStroke();
+//test mouse lightPosition
+if (mouseX > width-diametroellipse-tgsize/1.5 && mouseX < width-diametroellipse+tgsize/3 &&
+  mouseY > positionyTextoUp-tgsize && mouseY < positionyTextoUp+tgsize) {
+  triangleRightOver =1;
+} else {
+  triangleRightOver=0;
+}
+// last stage stop
+if (textClicks==4) {
+  fill(255,0);
+
+}else {
+  fill(255,127)
+}// rect(width-diametroellipse-tgsize/1.5, positionyTextoUp-tgsize, 100, 10)
+if (triangleRightOver==1 || rotationY < -15 ) {
+  translate(width-diametroellipse-(diametroellipse*0.1*(sin(frameCount/0.2))),positionyTextoUp)
+}else {
+  translate(width-diametroellipse,positionyTextoUp)
+}noStroke();
 triangle(tgsize/1.5,0,-tgsize/1.5,-tgsize,-tgsize/1.5,tgsize)
 pop();
 
 //TRIANGULO 2
 push();
-translate(diametroellipse,positionyTextoUp)
-noStroke();
 
-if (textCounter==1) {
-  fill(255,255/5)
+//test mouse lightPosition
+if (mouseX > diametroellipse-tgsize/1.5 && mouseX < diametroellipse+tgsize/3 &&
+  mouseY > positionyTextoUp-tgsize && mouseY < positionyTextoUp+tgsize) {
+  triangleLeftOver =1;
+} else {
+  triangleLeftOver=0;
 }
+// last stage stop
+if (textClicks==1) {
+  fill(255,0)
+}else {
+  fill(255,127)
+}
+
+if (triangleLeftOver==1 || rotationY < -15 ) {
+  if (textClicks>1) {
+    translate(diametroellipse-(diametroellipse*-0.1*(sin(frameCount/0.2))),positionyTextoUp)
+  }
+}else {
+  translate(diametroellipse,positionyTextoUp)
+}
+
+noStroke();
 
 triangle(-tgsize/1.5,0,tgsize/1.5,-tgsize,tgsize/1.5,tgsize)
 pop();
 
+//TIMER
+
+//TEXT SEC LIGA NO 1
+
+if (triangleRightOver) {
+  if (mouseIsPressed) {
+    timertext=0;
+  }
+}
+if (triangleLeftOver) {
+  if (mouseIsPressed) {
+    timertext=0;
+  }
+}
+
+if (textsec == 1 && frameCount % 2 == 0 && timertext >= 0) {
+  timertext++;
+}
+if (textsec == 0 && frameCount % 2 == 0 && timertext > 0) {
+  timertext--;
+}
+if (timertext > 100) {
+  timertext = 100
+}
+if (timertext < 0) {
+  timertext = 0
+}
+
+
+//TESTING TEXTS
+
+fill(255,255)
+text(textClicks, width/2,height/2 );
+text(triangleRightOver+'right', width/2,height/2 +30);
+text(textsec, width/2,height/2+60 );
+text(timertext, width/2,height/2+90 );
+
+//ROTATION Y AND TEXTCLICKS
+
+if (rotationY > 40) {
+  textClicks ++;
+}
+
+if (rotationY > 40) {
+  textClicks --;
+}
+
+if (textClicks > 4) {
+  textClicks = 1;
+}
+if (textClicks < 1) {
+  textClicks = 1;
+}
+
+var opacidadeTextoUp1 = 255*timertext/100;
+var opacidadeTextoUp2 = 255*timertext/100;
+var opacidadeTextoUp3 = 255*timertext/100;
+var opacidadeTextoUp4 = 255*timertext/100;
 
   //TEXT 1 - TITLE
 
-if (textCounter == 1) {
+if (textClicks == 1) {
   textStyle(BOLD);
   fill(255,opacidadeTextoUp1)
   textSize(diametroellipse/1.5)
@@ -919,39 +1002,43 @@ if (textCounter == 1) {
 
 //TEXT 2 -
 
-if (textCounter == 2) {
+if (textClicks == 2) {
   textStyle(BOLD);
   fill(255,opacidadeTextoUp2)
   textSize(diametroellipse/1.5)
-  text('texto 2', width/2,positionyTextoUp )
+  text('texto2', width/2,positionyTextoUp )
   textStyle(NORMAL);
   fill(255,opacidadeTextoUp2*0.5)
   textSize(diametroellipse/5)
-  text('subtitulo do texto 2', width/2,positionyTextoUp+diametroellipse/2.5 );
+  text(opacidadeTextoUp2, width/2,positionyTextoUp+diametroellipse/2.5 );
 }
 
 //TEXT 3 -
 
-if (textCounter == 3) {
-  tint(255, humitransp)
-  image(humidity3, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
+if (textClicks == 3) {
+  textStyle(BOLD);
+  fill(255,opacidadeTextoUp3)
+  textSize(diametroellipse/1.5)
+  text('texto3', width/2,positionyTextoUp )
+  textStyle(NORMAL);
+  fill(255,opacidadeTextoUp3*0.5)
+  textSize(diametroellipse/5)
+  text('texto3', width/2,positionyTextoUp+diametroellipse/2.5 );
 }
-
 //TEXT 4 -
 
-if (textCounter == 4) {
-  tint(255, humitransp)
-  image(humidity4, -diametroellipse / 2, -diametroellipse * 1.75, diametroellipse, diametroellipse)
+if (textClicks == 4) {
+  textStyle(BOLD);
+  fill(255,opacidadeTextoUp4)
+  textSize(diametroellipse/1.5)
+  text('texto4', width/2,positionyTextoUp )
+  textStyle(NORMAL);
+  fill(255,opacidadeTextoUp4*0.5)
+  textSize(diametroellipse/5)
+  text('texto4', width/2,positionyTextoUp+diametroellipse/2.5 );
+  triangleRightOver=0;
+
 }
-
-
-
-
-
-
-
-
-
 
   push();
 
@@ -959,11 +1046,22 @@ if (textCounter == 4) {
 
 function mousePressed() {
   if (humimouseover == 1) {
-    humiclicks++
-    mousepressionado = 1;
+    humiclicks++;
+    // mousepressionado = 1;
+  }
+  if (triangleRightOver == 1) {
+    textClicks++;
+      textsec =1;
+    // mousepressionado = 1;
+  }
+  if (triangleLeftOver == 1) {
+    textClicks--;
+    textsec =1;
+
   }
 
 }
+
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
