@@ -965,11 +965,11 @@ text(textClicks, width/2,height/2 +30);
 //ROTATION Y AND TEXTCLICKS
 
 if (rotationY > 40) {
-  textClicks ++;
+  textClicks --;
 }
 
 if (rotationY < -40) {
-  textClicks --;
+  textClicks ++;
 }
 
 if (textClicks > 4) {
