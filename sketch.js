@@ -858,9 +858,9 @@ function controladores() {
 
 
 
-if (1==1) {
-  var rotationY = 0;
-}
+// if (1==1) {
+//   var rotationY = 0;
+// }
 
 fill(255,255)
 text(textCounter, width/2,height/2 )
