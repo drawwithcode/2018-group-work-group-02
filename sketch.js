@@ -864,7 +864,7 @@ function controladores() {
   // TEXTS INFO UP
   pop();
 
-  var positionxTextoUp = width/2-rotationY*rotationY/4;
+  var positionxTextoUp = width/2-rotationY*rotationY/8;
   var positionyTextoUp = height/3.5-width/10;
 
 //TRIANGULOS
@@ -965,13 +965,13 @@ if (timertext < 0) {
 //ROTATION Y AND TEXTCLICKS
 
 if (rotationY > 40) {
-  if (frameCount % 30 == 0) {
+  if (frameCount % 15 == 0) {
     textClicks --
   };
 }
 
 if (rotationY < -40) {
-  if (frameCount % 30 == 0) {
+  if (frameCount % 15 == 0) {
     textClicks ++
   };
 }
