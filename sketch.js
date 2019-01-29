@@ -863,7 +863,7 @@ function controladores() {
 // }
 
 fill(255,255)
-text(textCounter, width/2,height/2 )
+text(rotationY, width/2,height/2 )
 
 if (rotationY > 82) {
   textCounter ++;
