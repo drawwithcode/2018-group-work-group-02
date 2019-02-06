@@ -1,5 +1,5 @@
 # Contrails
-By: Guilherme Appolinário and Marzieh Meghdadi.<p>
+by <b>Guilherme Appolinário</b> and <b>Marzieh Meghdadi</b>.<p>
 https://drawwithcode.github.io/2018-group-work-group-02/ <p>
 https://www.behance.net/gallery/75614125/Contrails-Web-App
 
