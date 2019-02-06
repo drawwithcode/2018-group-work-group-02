@@ -10,19 +10,23 @@ https://www.behance.net/gallery/75614125/Contrails-Web-App
 The airplane contrails make  nice shapes in the sky but they are not always the same. Sometimes they are intense, sometime are light and sometimes they disappear. Then Our idea is born thinking about why the airplanes contrails are different and we decided to show it by a mobile interactive system.
 
 # Design Challenges
-
+<ul>
+  <li>
 Keep everything simple with as little text as possible but allowing the user to understand what that interaction or element means.
-
+ </li>
+   <li>
 Making real life relations to the interaction. Example: to increase temperature one must rub the temperature button. To make the plane go up, user must tilt the device upwards in the same way a plane does.
-
+ </li> <li>
 Retaining a pleasant looking layout that was responsive, even though the sketch is designed mainly for the iPad.
+</li>
+  </ul>
 
 # Code Challenges
 
 Since none of us had plenty of experience with code, the project was divided by various small processes, each for every part of interaction. Below goes the list in a chronological order.
 
 <ul>
-  <li><p><b>Background that reacts to time:</b> the code itself was not so complex but the production of the PNG image took a lot of retrials. Eventually a proportion between time and the size of colors in the background was found.
+  <li><p><b>Background that reacts to time of the day:</b> the code itself was not so complex but the production of the PNG image took a lot of retrials. Eventually a proportion between time and the size of colors in the background was found.
 <p><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/a413a075614125.5c51d77a5c48f.png" alt="" height="100%" width="100%">
 </p>
 </li><p></p>
@@ -42,7 +46,7 @@ Since none of us had plenty of experience with code, the project was divided by 
   <p><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/aee13b75614125.5c5194376687d.gif" alt="" height="100%" width="100%"></p>
 </li>
 
-<li><p></p><p><b>Changing text by tilting:</b> this was complicated on the calibration side of the things. It was complicated to set the proper angle and also the feeback time for the text to change.
+<li><p></p><p><b>Changing text by tilting:</b> this was complicated on the calibration side of the things. It was complicated to set the proper angle and also the feedback time for the text to change.
 <p><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/b3745775614125.5c51d77a19997.gif" alt="" height="19%" width="19%">
 </p>
 </li><p></p>
