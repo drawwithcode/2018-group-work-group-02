@@ -17,12 +17,6 @@ Making real life relations to the interaction. Example: to increase temperature 
 
 Retaining a pleasant looking layout that was responsive, even though the sketch is designed mainly for the iPad.
 
-<div>
-<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/b3745775614125.5c51d77a19997.gif" alt="" height="19%" width="19%">
-<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/a9e6fb75614125.5c51d77a1a8dd.gif" alt="" height="19%" width="19%">
-</div>
-
-
 # Code Challenges
 
 Since none of us had plenty of experience with code, the project was divided by various small processes, each for every part of interaction. Below goes the list in a chronological order.
