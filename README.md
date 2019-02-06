@@ -18,28 +18,41 @@ Making real life relations to the interaction. Example: to increase temperature 
 Retaining a pleasant looking layout that was responsive, even though the sketch is designed mainly for the iPad.
 
 <div>
-<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/5c142175614125.5c51d77a19dc0.gif" alt="" height="19%" width="19%">
 <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/b3745775614125.5c51d77a19997.gif" alt="" height="19%" width="19%">
-<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/67242f75614125.5c51d77a1a17e.gif" alt="" height="19%" width="19%">
-<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/8de6db75614125.5c51d77a1a51f.gif" alt="" height="19%" width="19%">
 <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/a9e6fb75614125.5c51d77a1a8dd.gif" alt="" height="19%" width="19%">
 </div>
-<img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/a413a075614125.5c51d77a5c48f.png" alt="" height="100%" width="100%">
-</div>
+
 
 # Code Challenges
 
 Since none of us had plenty of experience with code, the project was divided by various small processes, each for every part of interaction. Below goes the list in a chronological order.
 
 <ul>
-  <li><b>Background that reacts to time:</b> the code itself was not so complex but the production of the PNG image took a lot of retrials. Eventually a proportion between time and the size of colors in the background was found.
-</li><p>
+  <li><p><b>Background that reacts to time:</b> the code itself was not so complex but the production of the PNG image took a lot of retrials. Eventually a proportion between time and the size of colors in the background was found.
+<p><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/a413a075614125.5c51d77a5c48f.png" alt="" height="100%" width="100%">
+</p>
+</li><p></p>
   
   <li><b>Changing the height of the plane</b> was hard at first because it either went too fast or slow. With various IF conditioners we managed to regulate how fast the plane goes up or down. And after finishing this part it was noted that when the plane reaches top high or low altitudes a feedback response was needed. This is why, now, the plane and text becomes red in such situations.
-</li><p>
+  <p><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/8de6db75614125.5c51d77a1a51f.gif" alt="" height="19%" width="19%">
+  </p></li><p></p>
+  
+
+
+<li><p></p><p><b>Timer based temperature:</b> since temperature returns to its regular state when the user is not pressing the button, some kind of timer had to be used. Initially there was a lot of confusion with how to achieve the desired result. But, eventually, we managed to solve it by applying a timer based on the number of times that the frameCount was divisible by a certain number. And this number was the controller of how fast the timer run.
+<p><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/67242f75614125.5c51d77a1a17e.gif" alt="" height="19%" width="19%">
+</p>
+</li><p></p>
   
   <li><b>Number of planes:</b> we initially wanted to show 4 types of planes, and that would require 6 particle systems. Since the sketch is already very heavy with 4 particles, the plane types were called off. Also, since the main idea of the sketch is showing how contrails work, having other plane types would be only aesthetical and not informative, so it was not a big commitment we lost after removing the planes.
+  <p><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/aee13b75614125.5c5194376687d.gif" alt="" height="100%" width="100%"></p>
 </li>
+
+<li><p></p><p><b>Changing text by tilting:</b> this was complicated on the calibration side of the things. It was complicated to set the proper angle and also the feeback time for the text to change.
+<p><img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/b3745775614125.5c51d77a19997.gif" alt="" height="19%" width="19%">
+</p>
+</li><p></p>
+
 </ul>
 
 
