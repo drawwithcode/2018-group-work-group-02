@@ -1,3 +1,56 @@
-# P5-empty-project
-This repository is the starting point of the assignments given in the elective course [Creative Coding at Politecnico di Milano](https://www11.ceda.polimi.it/schedaincarico/schedaincarico/controller/scheda_pubblica/SchedaPublic.do?&evn_default=evento&c_classe=696598&__pj0=0&__pj1=3ed8420c42c849845b5caa3de626e8fc).
-Browse [this website](https://drawwithcode.github.io/) if you want to know more about it.
+# Contrails
+By: Guilherme Appolinário and Marzieh Meghdadi.<p>
+https://drawwithcode.github.io/2018-group-work-group-02/ <p>
+https://www.behance.net/gallery/75614125/Contrails-Web-App
+
+<img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/e1fac575614125.5c59b756b7d79.png" alt="" height="100%" width="100%">
+</div>
+
+# Project Idea
+The airplane contrails make  nice shapes in the sky but they are not always the same. Sometimes they are intense, sometime are light and sometimes they disappear. Then Our idea is born thinking about why the airplanes contrails are different and we decided to show it by a mobile interactive system.
+
+# Design Challenges
+
+Keep everything simple with as little text as possible but allowing the user to understand what that interaction or element means.
+
+Making real life relations to the interaction. Example: to increase temperature one must rub the temperature button. To make the plane go up, user must tilt the device upwards in the same way a plane does.
+
+Retaining a pleasant looking layout that was responsive, even though the sketch is designed mainly for the iPad.
+
+<div>
+<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/5c142175614125.5c51d77a19dc0.gif" alt="" height="19%" width="19%">
+<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/b3745775614125.5c51d77a19997.gif" alt="" height="19%" width="19%">
+<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/67242f75614125.5c51d77a1a17e.gif" alt="" height="19%" width="19%">
+<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/8de6db75614125.5c51d77a1a51f.gif" alt="" height="19%" width="19%">
+<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/a9e6fb75614125.5c51d77a1a8dd.gif" alt="" height="19%" width="19%">
+</div>
+<img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/a413a075614125.5c51d77a5c48f.png" alt="" height="100%" width="100%">
+</div>
+
+# Code Challenges
+
+Since none of us had plenty of experience with code, the project was divided by various small processes, each for every part of interaction. Below goes the list in a chronological order.
+
+<ul>
+  <li><b>Background that reacts to time:</b> the code itself was not so complex but the production of the PNG image took a lot of retrials. Eventually a proportion between time and the size of colors in the background was found.
+</li><p>
+  
+  <li><b>Changing the height of the plane</b> was hard at first because it either went too fast or slow. With various IF conditioners we managed to regulate how fast the plane goes up or down. And after finishing this part it was noted that when the plane reaches top high or low altitudes a feedback response was needed. This is why, now, the plane and text becomes red in such situations.
+</li><p>
+  
+  <li><b>Number of planes:</b> we initially wanted to show 4 types of planes, and that would require 6 particle systems. Since the sketch is already very heavy with 4 particles, the plane types were called off. Also, since the main idea of the sketch is showing how contrails work, having other plane types would be only aesthetical and not informative, so it was not a big commitment we lost after removing the planes.
+</li>
+</ul>
+
+
+# Third Credits Libraries Used
+
+Particles: https://p5js.org/examples/simulate-particle-system.html
+
+# Contrail formation reference  
+
+ContrailScience: https://science-edu.larc.nasa.gov/contrail-edu/science.html
+
+<img src="https://i.pinimg.com/564x/9c/4b/08/9c4b085194c0e7df16a554250c9fec37.jpg" alt="" height="100%" width="100%">
+
+
