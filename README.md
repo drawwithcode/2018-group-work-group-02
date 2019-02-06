@@ -7,7 +7,10 @@ https://www.behance.net/gallery/75614125/Contrails-Web-App
 </div>
 
 # Project Idea
-The airplane contrails make  nice shapes in the sky but they are not always the same. Sometimes they are intense, sometime are light and sometimes they disappear. Then Our idea is born thinking about why the airplanes contrails are different and we decided to show it by a mobile interactive system.
+
+Contrail is a short name for the condensation trails left by airplanes in the sky. They make  nice shapes in the sky but they are not always the same. Sometimes they are intense, sometime are light and sometimes they disappear. Then our idea is born thinking about why the airplanes contrails are different and we decided to show it by a mobile interactive system.
+
+According to our studies, the shape and the intensity of the contrails depend on some different elements and the main effective elements are the number of engines, the altitude, the humidity and the temperature.
 
 # Design Challenges
 <ul>
